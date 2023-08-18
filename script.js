@@ -122,15 +122,14 @@ function spawnShape() {
 }
 
 function dropShape() {
-    if (!isCollision(board, currentShape, currentPos.x, currentPos.y + 1)) {
+    while (!isCollision(board, currentShape, currentPos.x, currentPos.y + 1)) {
         currentPos.y++;
-    } else {
-        mergeBoard(board, currentShape, currentPos.x, currentPos.y);
-        checkForLines();
-        spawnShape();
-        if (isCollision(board, currentShape, currentPos.x, currentPos.y)) {
-            console.log("Game Over");
-        }
+    }
+    mergeBoard(board, currentShape, currentPos.x, currentPos.y);
+    checkForLines();
+    spawnShape();
+    if (isCollision(board, currentShape, currentPos.x, currentPos.y)) {
+        console.log("Game Over");
     }
 }
 
