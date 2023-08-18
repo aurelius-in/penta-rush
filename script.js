@@ -63,7 +63,10 @@ const pentaShapes = [
     
 // Event Listeners
 pauseButton.addEventListener('click', togglePause);
-canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleTouchStart(e);
+});
 canvas.addEventListener('touchend', handleTouchEnd);
 canvas.addEventListener('touchmove', handleTouchMove);
 canvas.addEventListener('dblclick', rotateShape);
