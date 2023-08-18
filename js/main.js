@@ -3,28 +3,28 @@ const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById('score');
 const levelElement = document.getElementById('level');
-const pauseButton = document.createElement('button');
 
+const pauseButton = document.createElement('button');
 document.body.appendChild(pauseButton);
 pauseButton.innerText = "Pause";
-pauseButton.style.position = 'absolute';
-pauseButton.style.bottom = '10px';
-pauseButton.style.right = '10px';
+pauseButton.className = 'pause-button';
 
 // Constants
 const BLOCK_SIZE = 20;
 const COLS = 12;
-const ROWS = 20;
+const ROWS = 24;
+const DROP_MULTIPLIER = 0.95;
 let dropInterval = 1000; // 1 second
+
+// Game State
+let score = 0;
 let level = 1;
 let linesCleared = 0;
+let isPaused = false;
 
-// Game Variables
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-let score = 0;
 let currentShape;
 let currentPos = { x: COLS / 2 - 2, y: 0 };
-let isPaused = false;
 
 // Loading Images
 const blockImages = [];
@@ -60,6 +60,22 @@ const pentaShapes = [
     [[1, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
 
 ];
+
+pauseButton.addEventListener('click', togglePause);
+canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchend', handleTouchEnd);
+canvas.addEventListener('touchmove', handleTouchMove);
+canvas.addEventListener('dblclick', rotateShape);
+
+function togglePause() {
+    isPaused = !isPaused;
+    pauseButton.innerText = isPaused ? "Resume" : "Pause";
+}
+
+let touchStartX = 0;
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+}
 
 function resetBoard() {
     board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
@@ -206,6 +222,33 @@ canvas.addEventListener('touchmove', (event) => {
 canvas.addEventListener('dblclick', () => {
     rotateShape();
 });
+
+pauseButton.addEventListener('click', togglePause);
+canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchend', handleTouchEnd);
+canvas.addEventListener('touchmove', handleTouchMove);
+canvas.addEventListener('dblclick', rotateShape);
+
+function togglePause() {
+    isPaused = !isPaused;
+    pauseButton.innerText = isPaused ? "Resume" : "Pause";
+}
+
+let touchStartX = 0;
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+}
+
+function handleTouchEnd(event) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const canvasRect = canvas.getBoundingClientRect();
+
+    if (touchEndX < canvasRect.left + canvasRect.width / 2) moveShape(-1, 0);
+    else moveShape(1, 0);
+
+    if (touchEndX - touchStartX < -100) moveShape(-1, 0);
+    else if (touchEndX - touchStartX > 100) moveShape(1, 0);
+}
 
 function startGame() {
     resetBoard();
