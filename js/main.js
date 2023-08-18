@@ -12,8 +12,15 @@ const ROWS = 24;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
 let currentShape;
-let currentPos = { x: COLS / 2 - 2, y: 0 }; // Center the shape at the top
+let currentPos = { x: COLS / 2 - 2, y: 0 };
 
+// Loading Images
+const blockImages = [];
+for (let i = 1; i <= 14; i++) {
+    const img = new Image();
+    img.src = `assets/images/block${String(i).padStart(2, '0')}.png`;
+    blockImages.push(img);
+}
 
 // Penta-shapes
 const pentaShapes = [
