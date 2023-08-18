@@ -82,14 +82,11 @@ function handleTouchStart(event) {
 }
 
 function handleTouchEnd(event) {
-    const touchEndX = event.changedTouches[0].clientX;
-    const canvasRect = canvas.getBoundingClientRect();
+    const touchEndY = event.changedTouches[0].clientY;
+    const deltaY = touchEndY - touchStartY;
 
-    if (touchEndX < canvasRect.left + canvasRect.width / 2) moveShape(-1, 0);
-    else moveShape(1, 0);
-
-    if (touchEndX - touchStartX < -100) moveShape(-1, 0);
-    else if (touchEndX - touchStartX > 100) moveShape(1, 0);
+    if (deltaY < -100) rotateShape();  // Swipe up to change shape
+    else if (deltaY > 100) dropShape();  // Swipe down to drop shape
 }
 
 function handleTouchMove(event) {
