@@ -170,3 +170,52 @@ function startGame() {
 
 startGame();
 
+function isCollision(board, shape, posX, posY) {
+    for (let y = 0; y < shape.length; y++) {
+        for (let x = 0; x < shape[y].length; x++) {
+            if (shape[y][x]) {
+                if (
+                    // Outside the game bounds
+                    typeof board[y + posY] === 'undefined' ||
+                    typeof board[y + posY][x + posX] === 'undefined' ||
+                    board[y + posY][x + posX] ||
+                    x + posX < 0 ||
+                    y + posY >= ROWS ||
+                    x + posX >= COLS
+                ) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function moveShape(dx, dy) {
+    if (!isCollision(board, currentShape, currentPos.x + dx, currentPos.y + dy)) {
+        currentPos.x += dx;
+        currentPos.y += dy;
+    }
+}
+
+function mergeBoard(board, shape, posX, posY) {
+    for (let y = 0; y < shape.length; y++) {
+        for (let x = 0; x < shape[y].length; x++) {
+            if (shape[y][x]) {
+                board[y + posY][x + posX] = 1;
+            }
+        }
+    }
+}
+
+function rotateShape() {
+    const newShape = currentShape[0].map((_, index) =>
+        currentShape.map(row => row[index])
+    ).reverse();
+
+    if (!isCollision(board, newShape, currentPos.x, currentPos.y)) {
+        currentShape = newShape;
+    }
+}
+
+
