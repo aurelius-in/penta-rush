@@ -53,12 +53,11 @@ const pentaShapes = [
 // Rest of your code...
 
 function resetBoard() {
-function resetBoard() {
     board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 }
 
-function drawBlock(x, y) {
-    ctx.fillRect(BLOCK_SIZE * x, BLOCK_SIZE * y, BLOCK_SIZE, BLOCK_SIZE);
+function drawBlock(x, y, blockType) {
+    ctx.drawImage(blockImages[blockType - 1], BLOCK_SIZE * x, BLOCK_SIZE * y, BLOCK_SIZE, BLOCK_SIZE);
     ctx.strokeRect(BLOCK_SIZE * x, BLOCK_SIZE * y, BLOCK_SIZE, BLOCK_SIZE);
 }
 
@@ -66,16 +65,27 @@ function drawShape() {
     for (let y = 0; y < currentShape.length; y++) {
         for (let x = 0; x < currentShape[y].length; x++) {
             if (currentShape[y][x]) {
-                drawBlock(currentPos.x + x, currentPos.y + y);
+                drawBlock(currentPos.x + x, currentPos.y + y, currentShape[y][x]);
             }
         }
     }
 }
 
+function generateRandomShape() {
+    const randomIndex = Math.floor(Math.random() * pentaShapes.length);
+    const baseShape = pentaShapes[randomIndex];
+    return baseShape.map(row => row.map(cell => cell ? getRandomBlockNumber() : 0));
+}
+
+function getRandomBlockNumber() {
+    return Math.floor(Math.random() * 14) + 1;
+}
+
 function spawnShape() {
-    currentShape = pentaShapes[Math.floor(Math.random() * pentaShapes.length)];
+    currentShape = generateRandomShape();
     currentPos = { x: COLS / 2 - 2, y: 0 };
 }
+
 
 function dropShape() {
     // Check if moving down causes a collision
@@ -209,11 +219,12 @@ function mergeBoard(board, shape, posX, posY) {
     for (let y = 0; y < shape.length; y++) {
         for (let x = 0; x < shape[y].length; x++) {
             if (shape[y][x]) {
-                board[y + posY][x + posX] = 1;
+                board[y + posY][x + posX] = shape[y][x];
             }
         }
     }
 }
+
 
 function rotateShape() {
     const newShape = currentShape[0].map((_, index) =>
