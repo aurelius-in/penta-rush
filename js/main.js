@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById('score');
 const levelElement = document.getElementById('level');
 const pauseButton = document.createElement('button');
+
 document.body.appendChild(pauseButton);
 pauseButton.innerText = "Pause";
 pauseButton.style.position = 'absolute';
@@ -13,7 +14,7 @@ pauseButton.style.right = '10px';
 // Constants
 const BLOCK_SIZE = 20;
 const COLS = 12;
-const ROWS = 24;
+const ROWS = 20;
 let dropInterval = 1000; // 1 second
 let level = 1;
 let linesCleared = 0;
@@ -170,10 +171,8 @@ pauseButton.addEventListener('click', () => {
     pauseButton.innerText = isPaused ? "Resume" : "Pause";
 });
 
-canvas.addEventListener('touchstart', (event) => {
-    const touchX = event.touches[0].clientX;
-    const touchY = event.touches[0].clientY;
-    let touchStartX = 0;
+let touchStartX = 0;
+
 canvas.addEventListener('touchstart', (event) => {
     touchStartX = event.touches[0].clientX;
 });
