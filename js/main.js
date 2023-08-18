@@ -34,33 +34,9 @@ for (let i = 1; i <= 14; i++) {
     blockImages.push(img);
 }
 
-const pentaShapes = [
-    // 5-long
-    [[1, 1, 1, 1, 1]],
 
-    // L-shape variations
-    [[1, 1, 1, 1, 0], [1, 0, 0, 0, 0]],
-    [[0, 1, 1, 1, 1], [0, 0, 0, 0, 1]],
-    [[1, 0, 0, 0, 0], [1, 1, 1, 1, 0]],
-    [[0, 0, 0, 0, 1], [0, 1, 1, 1, 1]],
 
-    // T-shape variations
-    [[1, 1, 1, 1, 0], [0, 1, 0, 0, 0]],
-    [[1, 1, 1, 1, 0], [0, 0, 0, 1, 0]],
-    [[0, 1, 0, 0, 0], [1, 1, 1, 1, 0]],
-    [[0, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
-
-    // Z-shape variations
-    [[1, 1, 1, 0, 0], [0, 0, 1, 1, 0]],
-    [[0, 0, 0, 1, 1], [1, 1, 1, 0, 0]],
-    [[0, 0, 1, 1, 0], [1, 1, 1, 0, 0]],
-    [[1, 1, 1, 0, 0], [0, 0, 0, 1, 1]],
-
-    // U-shape
-    [[1, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
-
-];
-
+// Event Listeners
 pauseButton.addEventListener('click', togglePause);
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
@@ -75,6 +51,26 @@ function togglePause() {
 let touchStartX = 0;
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
+}
+
+function handleTouchEnd(event) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const canvasRect = canvas.getBoundingClientRect();
+
+    if (touchEndX < canvasRect.left + canvasRect.width / 2) moveShape(-1, 0);
+    else moveShape(1, 0);
+
+    if (touchEndX - touchStartX < -100) moveShape(-1, 0);
+    else if (touchEndX - touchStartX > 100) moveShape(1, 0);
+}
+
+function handleTouchMove(event) {
+    const touchY = event.touches[0].clientY;
+    const canvasRect = canvas.getBoundingClientRect();
+
+    if (touchY > canvasRect.bottom) {
+        dropShape();
+    }
 }
 
 function resetBoard() {
@@ -124,7 +120,7 @@ function checkForLines() {
 
             if (linesCleared % 5 === 0) {
                 level++;
-                dropInterval *= 0.95;
+                dropInterval *= DROP_MULTIPLIER;
             }
             scoreElement.textContent = "Score: " + score;
             levelElement.textContent = "Level: " + level;
@@ -135,8 +131,7 @@ function checkForLines() {
 function isCollision(board, shape, posX, posY) {
     for (let y = 0; y < shape.length; y++) {
         for (let x = 0; x < shape[y].length; x++) {
-            if (shape[y][x] &&
-                (board[y + posY] && board[y + posY][x + posX]) !== 0) {
+            if (shape[y][x] && (board[y + posY] && board[y + posY][x + posX]) !== 0) {
                 return true;
             }
         }
@@ -180,121 +175,6 @@ function gameLoop(timestamp) {
         drawShape();
     }
     requestAnimationFrame(gameLoop);
-}
-
-pauseButton.addEventListener('click', () => {
-    isPaused = !isPaused;
-    pauseButton.innerText = isPaused ? "Resume" : "Pause";
-});
-
-let touchStartX = 0;
-
-canvas.addEventListener('touchstart', (event) => {
-    touchStartX = event.touches[0].clientX;
-});
-
-canvas.addEventListener('touchend', (event) => {
-    const touchEndX = event.changedTouches[0].clientX;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchEndX < canvasRect.left + canvasRect.width / 2) {
-        moveShape(-1, 0);  // Move left
-    } else {
-        moveShape(1, 0);  // Move right
-    }
-
-    if (touchEndX - touchStartX < -100) { // Swipe left
-        moveShape(-1, 0);
-    } else if (touchEndX - touchStartX > 100) { // Swipe right
-        moveShape(1, 0);
-    }
-});
-
-canvas.addEventListener('touchmove', (event) => {
-    const touchY = event.touches[0].clientY;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchY > canvasRect.bottom) {
-        dropShape();
-    }
-});
-
-canvas.addEventListener('dblclick', () => {
-    rotateShape();
-});
-
-pauseButton.addEventListener('click', togglePause);
-canvas.addEventListener('touchstart', handleTouchStart);
-canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchmove', handleTouchMove);
-canvas.addEventListener('dblclick', rotateShape);
-
-// ... (The rest of the code remains unchanged until the event listeners)
-
-function togglePause() {
-    isPaused = !isPaused;
-    pauseButton.innerText = isPaused ? "Resume" : "Pause";
-}
-
-let touchStartX = 0;
-
-function handleTouchStart(event) {
-    touchStartX = event.touches[0].clientX;
-}
-
-function handleTouchEnd(event) {
-    const touchEndX = event.changedTouches[0].clientX;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchEndX < canvasRect.left + canvasRect.width / 2) moveShape(-1, 0);
-    else moveShape(1, 0);
-
-    if (touchEndX - touchStartX < -100) moveShape(-1, 0);
-    else if (touchEndX - touchStartX > 100) moveShape(1, 0);
-}
-
-function handleTouchMove(event) {
-    const touchY = event.touches[0].clientY;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchY > canvasRect.bottom) {
-        dropShape();
-    }
-}
-
-pauseButton.addEventListener('click', togglePause);
-canvas.addEventListener('touchstart', handleTouchStart);
-canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchmove', (event) => {
-    const touchY = event.touches[0].clientY;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchY > canvasRect.bottom) {
-        dropShape();
-    }
-});
-canvas.addEventListener('dblclick', rotateShape);
-
-function togglePause() {
-    isPaused = !isPaused;
-    pauseButton.innerText = isPaused ? "Resume" : "Pause";
-}
-
-let touchStartX = 0;
-
-function handleTouchStart(event) {
-    touchStartX = event.touches[0].clientX;
-}
-
-function handleTouchEnd(event) {
-    const touchEndX = event.changedTouches[0].clientX;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchEndX < canvasRect.left + canvasRect.width / 2) moveShape(-1, 0);
-    else moveShape(1, 0);
-
-    if (touchEndX - touchStartX < -100) moveShape(-1, 0);
-    else if (touchEndX - touchStartX > 100) moveShape(1, 0);
 }
 
 function startGame() {
