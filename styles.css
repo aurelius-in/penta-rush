@@ -13,9 +13,16 @@ body {
     align-items: center;
     height: 100vh;
     color: #ffffff;
+    flex-direction: column;
+}
+    
+
+#score, #level, .pause-button {
+    margin-top: 15px;
 }
 
 #board {
+    margin-top: 30px;
     border: 4px solid #ffffff;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
