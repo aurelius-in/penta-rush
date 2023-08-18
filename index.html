@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penta-Rush</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Penta Rush</title>
+    <link rel="stylesheet" href="styles.css"> <!-- If you have any styling -->
 </head>
 <body>
-    <div id="game-container">
-        <canvas id="board" width="240" height="480"></canvas>
-        <div id="scoreboard">
-            <h2>Score: <span id="score">0</span></h2>
-        </div>
-    </div>
-    <script src="js/lib/some-library.js"></script> <!-- Example, only include if you have any -->
-    <script src="js/utils.js"></script>
-    <script src="js/classes/Board.js"></script>
-    <script src="js/classes/Shape.js"></script>
-    <script src="js/classes/Score.js"></script>
-    <script src="js/main.js"></script>
+    <canvas id="board" width="240" height="480"></canvas> <!-- 12*20=240, 24*20=480 based on BLOCK_SIZE, ROWS, and COLS -->
+    <div id="score">Score: 0</div>
+    <div id="level">Level: 1</div>
+    <script src="script.js"></script>
 </body>
 </html>
