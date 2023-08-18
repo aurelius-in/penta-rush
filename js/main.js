@@ -34,8 +34,33 @@ for (let i = 1; i <= 14; i++) {
     blockImages.push(img);
 }
 
+const pentaShapes = [
+    // 5-long
+    [[1, 1, 1, 1, 1]],
 
+    // L-shape variations
+    [[1, 1, 1, 1, 0], [1, 0, 0, 0, 0]],
+    [[0, 1, 1, 1, 1], [0, 0, 0, 0, 1]],
+    [[1, 0, 0, 0, 0], [1, 1, 1, 1, 0]],
+    [[0, 0, 0, 0, 1], [0, 1, 1, 1, 1]],
 
+    // T-shape variations
+    [[1, 1, 1, 1, 0], [0, 1, 0, 0, 0]],
+    [[1, 1, 1, 1, 0], [0, 0, 0, 1, 0]],
+    [[0, 1, 0, 0, 0], [1, 1, 1, 1, 0]],
+    [[0, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
+
+    // Z-shape variations
+    [[1, 1, 1, 0, 0], [0, 0, 1, 1, 0]],
+    [[0, 0, 0, 1, 1], [1, 1, 1, 0, 0]],
+    [[0, 0, 1, 1, 0], [1, 1, 1, 0, 0]],
+    [[1, 1, 1, 0, 0], [0, 0, 0, 1, 1]],
+
+// U-shape
+    [[1, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
+
+];
+    
 // Event Listeners
 pauseButton.addEventListener('click', togglePause);
 canvas.addEventListener('touchstart', handleTouchStart);
