@@ -14,6 +14,7 @@ let score = 0;
 let currentShape;
 let currentPos = { x: COLS / 2 - 2, y: 0 }; // Center the shape at the top
 
+
 // Penta-shapes
 const pentaShapes = [
     // 5-long
@@ -40,11 +41,11 @@ const pentaShapes = [
     // U-shape
     [[1, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
 
-    // And so on for other pentomino shapes...
 ];
 
 // Rest of your code...
 
+function resetBoard() {
 function resetBoard() {
     board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 }
@@ -92,17 +93,80 @@ function dropShape() {
     }
 }
 
-function gameLoop() {
+let touchStartX = 0;
+let touchStartY = 0;
+
+canvas.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, false);
+
+canvas.addEventListener('touchend', (e) => {
+    let deltaX = e.changedTouches[0].clientX - touchStartX;
+    let deltaY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            moveShape(1, 0);
+        } else {
+            moveShape(-1, 0);
+        }
+    } else {
+        if (deltaY > 0) {
+            while (!isCollision(board, currentShape, currentPos.x, currentPos.y + 1)) {
+                currentPos.y++;
+            }
+        } else {
+            spawnShape();
+        }
+    }
+}, false);
+
+canvas.addEventListener('click', () => {
+    rotateShape();
+});
+
+let lastTime = 0;
+const dropInterval = 1000;
+
+function gameLoop(timestamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (timestamp - lastTime > dropInterval) {
+        dropShape();
+        lastTime = timestamp;
+    }
+
     drawShape();
-    dropShape();
     requestAnimationFrame(gameLoop);
 }
 
+function displayAllShapes() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pentaShapes.forEach((shape, index) => {
+        let x = index * 6;
+        let y = 5;
+
+        shape.forEach((row, rowIndex) => {
+            row.forEach((value, colIndex) => {
+                if (value) {
+                    drawBlock(x + colIndex, y + rowIndex);
+                }
+            });
+        });
+    });
+}
+
 function startGame() {
-    resetBoard();
-    spawnShape();
-    gameLoop();
+    displayAllShapes();
+
+    setTimeout(() => {
+        resetBoard();
+        spawnShape();
+        gameLoop();
+    }, 5000);
 }
 
 startGame();
+
