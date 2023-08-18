@@ -1,0 +1,43 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+}
+
+#board {
+    border: 4px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+}
+
+.pause-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #e91e63; /* Pink color */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pause-button:hover {
+    background-color: #d81b60; /* Darker pink on hover */
+}
+
+#score, #level {
+    text-align: center;
+    margin-top: 15px;
+}
