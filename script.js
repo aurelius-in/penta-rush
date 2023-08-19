@@ -133,6 +133,38 @@ function dropShape() {
     }
 }
 
+function generateLShape() {
+    const segment1 = getRandomSegment();
+    const segment2 = getRandomSegment();
+    const segment3 = getRandomSegment();
+    const segment4 = getRandomSegment();
+    const segment5 = getRandomSegment();
+
+    return [
+        [segment1, 0, 0, 0, 0],
+        [segment2, 0, 0, 0, 0],
+        [segment3, 0, 0, 0, 0],
+        [segment4, 0, 0, 0, 0],
+        [segment5, segment5, 0, 0, 0]
+    ];
+}
+
+function generateTShape() {
+    const segment1 = getRandomSegment();
+    const segment2 = getRandomSegment();
+    const segment3 = getRandomSegment();
+    const segment4 = getRandomSegment();
+    const segment5 = getRandomSegment();
+
+    return [
+        [segment1, segment2, segment3, 0, 0],
+        [segment4, 0, 0, 0, 0],
+        [segment5, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
 
 function checkForLines() {
     for (let y = board.length - 1; y >= 0; y--) {
