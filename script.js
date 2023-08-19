@@ -25,6 +25,8 @@ let lastTime = 0;
 let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
+let currentShapeIndex = 0; // Add this line to keep track of the current shape index
+
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
@@ -101,15 +103,10 @@ function getRandomSegment() {
 }
 
 // Shapes Generation
-function generateStraightShape() {
-    const segment = getRandomSegment();
-    return [
-        [0, 0, segment, 0, 0],
-        [0, 0, segment, 0, 0],
-        [0, 0, segment, 0, 0],
-        [0, 0, segment, 0, 0],
-        [0, 0, 0, 0, 0]
-    ];
+function generateRandomShape() {
+    const shape = SHAPES[currentShapeIndex];
+    currentShapeIndex = (currentShapeIndex + 1) % SHAPES.length; // Cycle through the shapes iteratively
+    return shape;
 }
 
 function generateSquareShape() {
@@ -184,7 +181,8 @@ function drawShape(shape, x, y) {
     for (let i = 0; i < shape.length; i++) {
         for (let j = 0; j < shape[i].length; j++) {
             if (shape[i][j]) {
-                drawSegment(x + j, y + i, SHAPES_COLORS[shape[i][j]]);
+                const blockImage = BLOCK_IMAGES[shape[i][j]]; // Get the block image for the shape
+                drawSegment(x + j, y + i, blockImage); // Use the block image to draw the segment
             }
         }
     }
