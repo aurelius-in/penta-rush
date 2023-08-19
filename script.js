@@ -16,20 +16,14 @@ startButton.className = 'start-button';
 
 // Constants
 const BLOCK_SIZE = 20;
-const COLS = 12; 
+const COLS = 15; 
 const ROWS = 24;
 const DROP_MULTIPLIER = 0.95;
 let dropInterval = 1000; // 1 second
 
 // Adjust the canvas size
-canvas.height = 15 * BLOCK_SIZE;
-
-// Constants
-const BLOCK_SIZE = 20;
-const COLS = 12; 
-const ROWS = 24;
-const DROP_MULTIPLIER = 0.95;
-let dropInterval = 1000; // 1 second
+canvas.height = ROWS * BLOCK_SIZE;
+canvas.width = COLS * BLOCK_SIZE;
 
 // Game State
 let score = 0;
@@ -78,6 +72,7 @@ const pentaShapes = [
     
 // Event Listeners
 pauseButton.addEventListener('click', togglePause);
+startButton.addEventListener('click', startGame);
 canvas.addEventListener('touchstart', (e) => {
     e.preventDefault();
     handleTouchStart(e);
@@ -85,11 +80,23 @@ canvas.addEventListener('touchstart', (e) => {
 canvas.addEventListener('touchend', handleTouchEnd);
 canvas.addEventListener('touchmove', handleTouchMove);
 canvas.addEventListener('dblclick', rotateShape);
+document.addEventListener('keydown', handleKeyDown);
 
 function togglePause() {
     isPaused = !isPaused;
     pauseButton.innerText = isPaused ? "Resume" : "Pause";
 }
+
+function handleKeyDown(e) {
+    if (!isPaused) {
+        if (e.key === 'ArrowLeft') moveShape(-1, 0);
+        else if (e.key === 'ArrowRight') moveShape(1, 0);
+        else if (e.key === 'ArrowDown') moveShape(0, 1);
+        else if (e.key === 'ArrowUp') rotateShape();
+    }
+}
+
+
 
 let touchStartX = 0;
 function handleTouchStart(event) {
