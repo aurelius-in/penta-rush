@@ -319,4 +319,3 @@ init(); // Initialize the game
 pauseButton.addEventListener('click', togglePause); // Add event listener
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchcancel', handleTouchTap); // Tap event
