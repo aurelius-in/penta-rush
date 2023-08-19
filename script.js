@@ -9,13 +9,19 @@ document.body.appendChild(pauseButton);
 pauseButton.innerText = "Pause";
 pauseButton.className = 'pause-button';
 
-// Add this after your pauseButton definition:
 const startButton = document.createElement('button');
 document.body.appendChild(startButton);
 startButton.innerText = "Start";
 startButton.className = 'start-button';
-startButton.addEventListener('click', startGame);    
-// Adjust the canvas size to allow for 15 segments:
+
+// Constants
+const BLOCK_SIZE = 20;
+const COLS = 12; 
+const ROWS = 24;
+const DROP_MULTIPLIER = 0.95;
+let dropInterval = 1000; // 1 second
+
+// Adjust the canvas size
 canvas.height = 15 * BLOCK_SIZE;
 
 // Constants
