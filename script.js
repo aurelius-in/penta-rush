@@ -21,15 +21,6 @@ let currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 let lastTime = 0;
 
-
-
-// Shape Colors
-const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
-
-// Current Shape Info
-let currentShape = null;
-let currentPos = { x: 0, y: 0 };
-
 // Shape Colors
 const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 
