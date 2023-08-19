@@ -242,6 +242,7 @@ function init() {
 
 
 function gameLoop(timestamp) {
+    lastTime = lastTime || timestamp;
     if (!isPaused) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
