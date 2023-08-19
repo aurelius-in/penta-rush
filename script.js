@@ -261,6 +261,7 @@ function isCollision(board, shape, posX, posY) {
     for (let y = 0; y < shape.length; y++) {
         for (let x = 0; x < shape[y].length; x++) {
             if (shape[y][x] && (board[y + posY] && board[y + posY][x + posX]) !== 0) {
+                console.log('Collision detected at:', x + posX, y + posY);  // Debugging line
                 return true;
             }
         }
@@ -268,16 +269,15 @@ function isCollision(board, shape, posX, posY) {
     return false;
 }
 
+
 function moveShape(dx, dy) {
     if (!isCollision(board, currentShape, currentPos.x + dx, currentPos.y + dy)) {
         currentPos.x += dx;
         currentPos.y += dy;
-    } else if (dy === 1) {  // If we were trying to move down and couldn't, merge the shape and spawn a new one
-        mergeBoard(board, currentShape, currentPos.x, currentPos.y);
-        checkForLines();
-        spawnShape();
+        console.log('Shape moved to:', currentPos.x, currentPos.y);  // Debugging line
     }
 }
+
 
 
 function mergeBoard(board, shape, posX, posY) {
