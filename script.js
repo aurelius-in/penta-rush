@@ -11,7 +11,7 @@ pauseButton.className = 'pause-button';
 
 // Constants
 const BLOCK_SIZE = 20;
-const COLS = 12;
+const COLS = 12; 
 const ROWS = 24;
 const DROP_MULTIPLIER = 0.95;
 let dropInterval = 1000; // 1 second
