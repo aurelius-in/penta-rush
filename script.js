@@ -217,12 +217,15 @@ function startGame() {
 }
 
 
+const pauseButton = document.getElementById("pause"); // Get the pause button
+
 function togglePause() {
     isPaused = !isPaused;
     if (!isPaused) {
         gameLoop();
     }
 }
+
 
 // Draw Segment Function
 function drawSegment(x, y, color) {
@@ -262,11 +265,11 @@ function handleKeyDown(event) {
 startButton.addEventListener('click', startGame);
 canvas.addEventListener('keydown', handleKeyDown);
 
-// pauseButton.addEventListener('click', togglePause);
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
 init(); // Initialize the game
 
+pauseButton.addEventListener('click', togglePause); // Add event listener
 // canvas.addEventListener('touchstart', handleTouchStart);
 // canvas.addEventListener('touchend', handleTouchEnd);
 // canvas.addEventListener('touchmove', handleTouchMove);
