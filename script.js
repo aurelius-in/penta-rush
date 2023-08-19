@@ -68,6 +68,25 @@ function handleTouchEnd(event) {
     }
 }
 
+function clearLines() {
+    for (let y = 0; y < ROWS; y++) {
+        let isLineFull = true;
+        for (let x = 0; x < COLS; x++) {
+            if (board[y][x] === 0) {
+                isLineFull = false;
+                break;
+            }
+        }
+        if (isLineFull) {
+            // Remove the line and add a new empty line at the top
+            board.splice(y, 1);
+            board.unshift(Array(COLS).fill(0));
+            // Increment score or perform other actions as needed
+        }
+    }
+}
+
+
 
 function handleTouchTap() {
     rotateShape(); // Rotate the shape
@@ -225,6 +244,7 @@ function mergeShape() {
             }
         }
     }
+    clearLines(); // Add this line to clear full lines
 }
 
 function init() {
