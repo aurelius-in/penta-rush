@@ -309,7 +309,7 @@ function handleKeyDown(event) {
 }
 
 startButton.addEventListener('click', startGame);
-canvas.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
