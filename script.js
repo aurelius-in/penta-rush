@@ -116,8 +116,11 @@ function drawShape() {
     }
 }
 
+const shapeGenerators = [generateLShape, ...]; // list all your shape generating functions
+
 function spawnShape() {
-    currentShape = pentaShapes[Math.floor(Math.random() * pentaShapes.length)];
+    const randomShapeGenerator = shapeGenerators[Math.floor(Math.random() * shapeGenerators.length)];
+    currentShape = randomShapeGenerator();
     currentPos = { x: COLS / 2 - 2, y: 0 };
 }
 
