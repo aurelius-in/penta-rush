@@ -1,7 +1,7 @@
 // Board Initialization
-const COLS = 10;
-const ROWS = 20;
-const BLOCK_SIZE = 30;
+const COLS = 15;
+const ROWS = 25;
+const BLOCK_SIZE = 20;
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 const scoreElement = document.getElementById("score");
