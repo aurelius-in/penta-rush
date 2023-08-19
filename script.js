@@ -20,6 +20,47 @@ let currentShape = null;
 let currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 let lastTime = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchEnd(event) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Horizontal swipe
+        if (deltaX > 0) {
+            moveShapeRight(); // Swipe right
+        } else {
+            moveShapeLeft(); // Swipe left
+        }
+    } else {
+        // Vertical swipe
+        if (deltaY > 0) {
+            // Swipe down
+            while (!checkCollision(currentShape, currentPos.x, currentPos.y + 1)) {
+                currentPos.y += 1; // Drop to the bottom
+            }
+            mergeShape();
+            currentShape = generateRandomShape();
+            currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
+        } else {
+            // Swipe up
+            currentShape = generateRandomShape(); // Change to the next shape
+        }
+    }
+}
+
+function handleTouchTap() {
+    rotateShape(); // Rotate the shape
+}
 
 function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
@@ -270,7 +311,6 @@ canvas.focus(); // Ensure that the canvas is focused to receive key events
 init(); // Initialize the game
 
 pauseButton.addEventListener('click', togglePause); // Add event listener
-// canvas.addEventListener('touchstart', handleTouchStart);
-// canvas.addEventListener('touchend', handleTouchEnd);
-// canvas.addEventListener('touchmove', handleTouchMove);
-// canvas.addEventListener('dblclick', rotateShape);
+canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchend', handleTouchEnd);
+canvas.addEventListener('touchcancel', handleTouchTap); // Tap event
