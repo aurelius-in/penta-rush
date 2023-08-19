@@ -27,6 +27,10 @@ body {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
 
+.start-button, .pause-button {
+    margin: 10px;
+}
+
 .pause-button {
     display: block;
     margin: 20px auto;
