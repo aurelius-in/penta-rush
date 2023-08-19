@@ -21,9 +21,6 @@ let currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 let lastTime = 0;
 
-// Shape Colors
-const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
-
 function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
 }
