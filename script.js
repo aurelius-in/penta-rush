@@ -1,3 +1,5 @@
+import { SHAPES, BLOCK_IMAGES } from './shapes.js';
+
 // Board Initialization
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 15;
