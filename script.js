@@ -204,13 +204,10 @@ function moveShapeRight() {
 }
 
 function rotateShape() {
-    const rotatedShape = [];
-    for (let x = 0; x < currentShape[0].length; x++) {
-        rotatedShape[x] = [];
-        for (let y = 0; y < currentShape.length; y++) {
-            rotatedShape[x][y] = currentShape[y][x];
-        }
-    }
+    const rotatedShape = currentShape[0].map((_, index) =>
+        currentShape.map(row => row[index])
+    );
+    rotatedShape.forEach(row => row.reverse());
     if (!checkCollision(rotatedShape, currentPos.x, currentPos.y)) {
         currentShape = rotatedShape;
     }
