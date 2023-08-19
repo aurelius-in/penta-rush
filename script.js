@@ -200,10 +200,10 @@ function init() {
     dropInterval = INITIAL_DROP_INTERVAL;
     isPaused = false;
     currentShape = generateRandomShape();
-    currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 }; // Keep this initialization
 
     drawBoard();
-    drawShape(currentShape, currentPos.x, currentPos.y); // Updated drawShape call
+    drawShape(currentShape, currentPos.x, currentPos.y);
 }
 
 
@@ -281,7 +281,7 @@ canvas.focus(); // Ensure that the canvas is focused to receive key events
 
 init(); // Initialize the game
 
-canvas.addEventListener('touchstart', handleTouchStart);
-canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchmove', handleTouchMove);
-canvas.addEventListener('dblclick', rotateShape);
+// canvas.addEventListener('touchstart', handleTouchStart);
+// canvas.addEventListener('touchend', handleTouchEnd);
+// canvas.addEventListener('touchmove', handleTouchMove);
+// canvas.addEventListener('dblclick', rotateShape);
