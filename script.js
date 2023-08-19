@@ -1,4 +1,5 @@
 // Board Initialization
+const INITIAL_DROP_INTERVAL = 999; // You can adjust this value as needed.
 const COLS = 15;
 const ROWS = 25;
 const BLOCK_SIZE = 20;
@@ -221,7 +222,24 @@ function handleTouchStart(e) {
     isTapped = true;
 }
 
-function handleTouchEnd() {
+function nextShape() {
+    // Set currentShape to the nextShape
+    currentShape = nextShape;
+    
+    // Randomly select a new shape from the SHAPES array for the nextShape
+    nextShape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+
+    // Reset the current position to the top-middle of the board
+    currentPosition = { x: Math.floor(COLUMNS / 2) - 1, y: 0 };
+
+    // Check if the new currentShape can be placed in the board, if not, game over.
+    if (!isValidMove(currentShape, currentPosition.x, currentPosition.y)) {
+        gameOver();
+    }
+}
+
+
+function handleTouchEnd(e) {
     // If it was just a tap (not a swipe), rotate the shape
     if (isTapped) {
         rotateShape();
@@ -321,29 +339,6 @@ canvas.addEventListener('touchmove', handleTouchMove);
 canvas.addEventListener('dblclick', rotateShape);
 document.addEventListener('keydown', handleKeyDown);
 
-function drawBoard() {
-    for (let y = 0; y < board.length; y++) {
-        for (let x = 0; x < board[y].length; x++) {
-            if (board[y][x]) {
-                ctx.fillStyle = COLORS[board[y][x]];
-                ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-                ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-            }
-        }
-    }
-}
-
-function drawShape() {
-    for (let y = 0; y < currentShape.length; y++) {
-        for (let x = 0; x < currentShape[y].length; x++) {
-            if (currentShape[y][x]) {
-                ctx.fillStyle = COLORS[currentShape[y][x]];
-                ctx.fillRect((x + currentPos.x) * BLOCK_SIZE, (y + currentPos.y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-                ctx.strokeRect((x + currentPos.x) * BLOCK_SIZE, (y + currentPos.y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-            }
-        }
-    }
-}
 
 function spawnShape() {
     currentShape = generateRandomShape();
