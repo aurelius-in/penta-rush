@@ -35,22 +35,22 @@ overflow: hidden; /* Prevent scrolling */
 
 .start-button {
     margin: 10px;
-    padding: 10px 20px;
-    background-color: #4caf50; /* Green color */
     color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 10px;
+    padding: 10px 15px; /* Reduce padding to make it smaller */
+    background-color: #2dbf67; /* Lighter green color */
+
 }
 
 .pause-button {
-    display: block;
-    margin: 20px auto;
-    padding.pause-button {
     margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 25px; /* Increase padding to make it wider */
+    display: block;
     background-color: #e91e63; /* Pink color */
     color: #ffffff;
     border: none;
