@@ -306,6 +306,13 @@ function startGame() {
     if (!isPaused) gameLoop();
 }
 
+function togglePause() {
+    isPaused = !isPaused;
+    if (!isPaused) {
+        gameLoop(); // resume game loop
+    }
+}
+
 pauseButton.addEventListener('click', togglePause);
 startButton.addEventListener('click', startGame);
 canvas.addEventListener('touchstart', handleTouchStart);
