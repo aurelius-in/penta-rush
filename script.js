@@ -9,6 +9,8 @@ document.body.appendChild(pauseButton);
 pauseButton.innerText = "Pause";
 pauseButton.className = 'pause-button';
 
+
+
 const startButton = document.createElement('button');
 document.body.appendChild(startButton);
 startButton.innerText = "Start";
@@ -16,8 +18,23 @@ startButton.className = 'start-button';
 
 // Constants
 const BLOCK_SIZE = 20;
-const COLS = 15; 
-const ROWS = 24;
+const ROWS = 25;
+const COLS = 15;
+let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+let blockImages = []; // Assuming you'd fill this up with images or some definitions.
+let score = 0;
+let linesCleared = 0;
+let level = 1;
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const scoreElement = document.getElementById("score");
+const levelElement = document.getElementById("level");
+const pauseButton = document.getElementById("pauseButton");
+const startButton = document.getElementById("startButton");
+let currentShape = null;
+let currentPos = { x: 0, y: 0 };
+let isPaused = false;
+
 const DROP_MULTIPLIER = 0.95;
 let dropInterval = 1000; // 1 second
 
@@ -120,14 +137,6 @@ function handleTouchMove(event) {
     }
 }
 
-function resetBoard() {
-    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-}
-
-function drawBlock(x, y, imageIndex) {
-    ctx.drawImage(blockImages[imageIndex], BLOCK_SIZE * x, BLOCK_SIZE * y, BLOCK_SIZE, BLOCK_SIZE);
-}
-
 function drawShape() {
     for (let y = 0; y < currentShape.length; y++) {
         for (let x = 0; x < currentShape[y].length; x++) {
@@ -138,6 +147,23 @@ function drawShape() {
     }
 }
 
+function drawBoard() {
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (board[y][x]) {
+                drawBlock(x, y, board[y][x] - 1);
+            }
+        }
+    }
+}
+
+function drawBlock(x, y, imageIndex) {
+    // Placeholder for drawing. You'd likely use blockImages here to fetch the actual image/color.
+    ctx.fillStyle = ['red', 'green', 'blue', 'yellow', 'orange'][imageIndex % 5]; // For demo
+    ctx.fillRect(x * 30, y * 30, 30, 30); // Assuming each block is 30x30 pixels.
+}
+
+
 const shapeGenerators = [generateLShape, ...]; // list all your shape generating functions
 
 function spawnShape() {
@@ -145,6 +171,10 @@ function spawnShape() {
     currentShape = randomShapeGenerator();
     currentPos = { x: COLS / 2 - 2, y: 0 };
 }
+function resetBoard() {
+    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+}
+
 
 function dropShape() {
     while (!isCollision(board, currentShape, currentPos.x, currentPos.y + 1)) {
@@ -356,16 +386,6 @@ document.addEventListener('keydown', handleKeyDown);
 function togglePause() {
     isPaused = !isPaused;
     pauseButton.innerText = isPaused ? "Resume" : "Pause";
-}
-
-function drawBoard() {
-    for (let y = 0; y < ROWS; y++) {
-        for (let x = 0; x < COLS; x++) {
-            if (board[y][x]) {
-                drawBlock(x, y, board[y][x] - 1);
-            }
-        }
-    }
 }
 
 function gameLoop(timestamp) {
