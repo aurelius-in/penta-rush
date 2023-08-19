@@ -42,29 +42,32 @@ function handleTouchEnd(event) {
     if (touchDuration < 300 && Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
         rotateShape(); // Rotate the shape
         return; // Exit the function to avoid handling as a swipe
-    }   
+    }
+
+    // Horizontal swipe
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        // Horizontal swipe
         if (deltaX > 0) {
             moveShapeRight(); // Swipe right
         } else {
             moveShapeLeft(); // Swipe left
-        } 
-         
-// Vertical 
-if (deltaY > 0) {
-        // Swipe down
-        while (!checkCollision(currentShape, currentPos.x, currentPos.y + 1)) {
-            currentPos.y += 1; // Drop to the bottom
         }
-        mergeShape();
-        currentShape = generateRandomShape();
-        currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
     } else {
-        // Swipe up
-        currentShape = generateRandomShape(); // Change to the next shape
+        // Vertical swipe
+        if (deltaY > 0) {
+            // Swipe down
+            while (!checkCollision(currentShape, currentPos.x, currentPos.y + 1)) {
+                currentPos.y += 1; // Drop to the bottom
+            }
+            mergeShape();
+            currentShape = generateRandomShape();
+            currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
+        } else {
+            // Swipe up
+            currentShape = generateRandomShape(); // Change to the next shape
+        }
     }
 }
+
 
 function handleTouchTap() {
     rotateShape(); // Rotate the shape
