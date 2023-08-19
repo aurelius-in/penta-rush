@@ -217,7 +217,7 @@ function gameLoop(timestamp) {
         }
 
         drawBoard();
-        drawShape();
+        drawShape(currentShape, currentPos.x, currentPos.y); // Add arguments
     }
     requestAnimationFrame(gameLoop);
 }
