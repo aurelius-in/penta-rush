@@ -1,147 +1,43 @@
+// Constants
+const COLS = 10;
+const ROWS = 20;
+const BLOCK_SIZE = 30;
+const DROP_INTERVAL_INITIAL = 1000;
+const DROP_MULTIPLIER = 0.95;
+const CANVAS_WIDTH = COLS * BLOCK_SIZE;
+const CANVAS_HEIGHT = ROWS * BLOCK_SIZE;
+
 // DOM Elements
-const canvas = document.getElementById('board');
+const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
+
+const pauseButton = document.getElementById('pauseButton');
+const startButton = document.getElementById('startButton');
 const scoreElement = document.getElementById('score');
 const levelElement = document.getElementById('level');
 
-const pauseButton = document.createElement('button');
-document.body.appendChild(pauseButton);
-pauseButton.innerText = "Pause";
-pauseButton.className = 'pause-button';
-
-
-
-const startButton = document.createElement('button');
-document.body.appendChild(startButton);
-startButton.innerText = "Start";
-startButton.className = 'start-button';
-
-// Constants
-const BLOCK_SIZE = 20;
-const ROWS = 25;
-const COLS = 15;
-let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-let blockImages = []; // Assuming you'd fill this up with images or some definitions.
-let score = 0;
-let linesCleared = 0;
-let level = 1;
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-const scoreElement = document.getElementById("score");
-const levelElement = document.getElementById("level");
-const pauseButton = document.getElementById("pauseButton");
-const startButton = document.getElementById("startButton");
-let currentShape = null;
-let currentPos = { x: 0, y: 0 };
-let isPaused = false;
-
-const DROP_MULTIPLIER = 0.95;
-let dropInterval = 1000; // 1 second
-
-// Adjust the canvas size
-canvas.height = ROWS * BLOCK_SIZE;
-canvas.width = COLS * BLOCK_SIZE;
-
-// Game State
-let score = 0;
-let level = 1;
-let linesCleared = 0;
-let isPaused = false;
-
+// Game Variables
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let currentShape;
-let currentPos = { x: COLS / 2 - 2, y: 0 };
+let currentPos = { x: 0, y: 0 };
+let dropInterval = DROP_INTERVAL_INITIAL;
+let score = 0;
+let linesCleared = 0;
+let level = 1;
+let isPaused = false;
 
-// Loading Images
-const blockImages = [];
-for (let i = 1; i <= 14; i++) {
-    const img = new Image();
-    img.src = `assets/images/block${String(i).padStart(2, '0')}.png`;
-    blockImages.push(img);
-}
-
-const pentaShapes = [
-    // 5-long
-    [[1, 1, 1, 1, 1]],
-
-    // L-shape variations
-    [[1, 1, 1, 1, 0], [1, 0, 0, 0, 0]],
-    [[0, 1, 1, 1, 1], [0, 0, 0, 0, 1]],
-    [[1, 0, 0, 0, 0], [1, 1, 1, 1, 0]],
-    [[0, 0, 0, 0, 1], [0, 1, 1, 1, 1]],
-
-    // T-shape variations
-    [[1, 1, 1, 1, 0], [0, 1, 0, 0, 0]],
-    [[1, 1, 1, 1, 0], [0, 0, 0, 1, 0]],
-    [[0, 1, 0, 0, 0], [1, 1, 1, 1, 0]],
-    [[0, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
-
-    // Z-shape variations
-    [[1, 1, 1, 0, 0], [0, 0, 1, 1, 0]],
-    [[0, 0, 0, 1, 1], [1, 1, 1, 0, 0]],
-    [[0, 0, 1, 1, 0], [1, 1, 1, 0, 0]],
-    [[1, 1, 1, 0, 0], [0, 0, 0, 1, 1]],
-
-// U-shape
-    [[1, 0, 0, 1, 0], [1, 1, 1, 1, 0]],
-
-];
-    
-// Event Listeners
-pauseButton.addEventListener('click', togglePause);
-startButton.addEventListener('click', startGame);
-canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    handleTouchStart(e);
-});
-canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchmove', handleTouchMove);
-canvas.addEventListener('dblclick', rotateShape);
-document.addEventListener('keydown', handleKeyDown);
-
-function togglePause() {
-    isPaused = !isPaused;
-    pauseButton.innerText = isPaused ? "Resume" : "Pause";
-}
-
-function handleKeyDown(e) {
-    if (!isPaused) {
-        if (e.key === 'ArrowLeft') moveShape(-1, 0);
-        else if (e.key === 'ArrowRight') moveShape(1, 0);
-        else if (e.key === 'ArrowDown') moveShape(0, 1);
-        else if (e.key === 'ArrowUp') rotateShape();
-    }
-}
-
-
-
-let touchStartX = 0;
-function handleTouchStart(event) {
-    touchStartX = event.touches[0].clientX;
-}
-
-function handleTouchEnd(event) {
-    const touchEndY = event.changedTouches[0].clientY;
-    const deltaY = touchEndY - touchStartY;
-
-    if (deltaY < -100) rotateShape();  // Swipe up to change shape
-    else if (deltaY > 100) dropShape();  // Swipe down to drop shape
-}
-
-function handleTouchMove(event) {
-    const touchY = event.touches[0].clientY;
-    const canvasRect = canvas.getBoundingClientRect();
-
-    if (touchY > canvasRect.bottom) {
-        dropShape();
-    }
+// Drawing Functions
+function drawBlock(x, y, image) {
+    ctx.drawImage(image, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
 
 function drawShape() {
     for (let y = 0; y < currentShape.length; y++) {
         for (let x = 0; x < currentShape[y].length; x++) {
             if (currentShape[y][x]) {
-                drawBlock(currentPos.x + x, currentPos.y + y, currentShape[y][x] - 1);
+                drawBlock(currentPos.x + x, currentPos.y + y, blockImages[currentShape[y][x]]);
             }
         }
     }
@@ -151,29 +47,81 @@ function drawBoard() {
     for (let y = 0; y < ROWS; y++) {
         for (let x = 0; x < COLS; x++) {
             if (board[y][x]) {
-                drawBlock(x, y, board[y][x] - 1);
+                drawBlock(x, y, blockImages[board[y][x]]);
             }
         }
     }
 }
 
-function drawBlock(x, y, imageIndex) {
-    // Placeholder for drawing. You'd likely use blockImages here to fetch the actual image/color.
-    ctx.fillStyle = ['red', 'green', 'blue', 'yellow', 'orange'][imageIndex % 5]; // For demo
-    ctx.fillRect(x * 30, y * 30, 30, 30); // Assuming each block is 30x30 pixels.
+// Helper Functions
+function resetBoard() {
+    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomShape() {
+    const shapes = [
+        [[1, 1, 1, 1]],
+        [[1, 1], [1, 1]],
+        [[1, 1, 0], [0, 1, 1]],
+        [[0, 1, 1], [1, 1]],
+        [[1, 1, 1], [0, 1, 0]],
+        [[1, 1, 1], [1, 0, 0]],
+        [[1, 1, 1], [0, 0, 1]]
+    ];
+    return shapes[getRandomInt(0, shapes.length - 1)];
+}
+
+function spawnShape() {
+    currentShape = getRandomShape();
+    currentPos.y = 0;
+    currentPos.x = Math.floor((COLS - currentShape[0].length) / 2);
+}
+
+function handleKeyDown(e) {
+    switch (e.keyCode) {
+        case 37: // Left Arrow
+            moveShape(-1, 0);
+            break;
+        case 39: // Right Arrow
+            moveShape(1, 0);
+            break;
+        case 40: // Down Arrow
+            moveShape(0, 1);
+            break;
+        case 38: // Up Arrow
+            rotateShape();
+            break;
+    }
+}
+
+// Shapes Generation
+function generateStraightShape() {
+    const segment = getRandomSegment();
+    return [[segment, segment, segment, segment]];
+}
+
+function generateSquareShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, segment],
+        [segment, segment]
+    ];
+}
+
+function generateZShape() {
+    const segments = Array(3).fill(0).map(_ => getRandomSegment());
+    return [
+        [segments[0], segments[1], 0],
+        [0, segments[1], segments[2]]
+    ];
 }
 
 
 const shapeGenerators = [generateLShape, ...]; // list all your shape generating functions
-
-function spawnShape() {
-    const randomShapeGenerator = shapeGenerators[Math.floor(Math.random() * shapeGenerators.length)];
-    currentShape = randomShapeGenerator();
-    currentPos = { x: COLS / 2 - 2, y: 0 };
-}
-function resetBoard() {
-    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-}
 
 
 function dropShape() {
@@ -259,6 +207,7 @@ function generateSShape() {
     ];
 }
 
+// Shapes Generation (continued from Section 2)
 function generateUShape() {
     const segments = Array(5).fill(0).map(_ => getRandomSegment());
     return [
@@ -273,19 +222,16 @@ function generateUShape() {
 function generateRandomShape() {
     const shapeGenerators = [
         generateStraightShape, 
-        generateLShape, 
-        generateJShape, 
-        generateTShape, 
+        generateSquareShape, 
         generateZShape, 
-        generateSShape, 
+        // ... Add other shape generation functions here ...
         generateUShape
     ];
     const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
     return shapeGenerators[randomIndex]();
 }
 
-
-
+// Game Logic
 function checkForLines() {
     for (let y = board.length - 1; y >= 0; y--) {
         if (board[y].every(cell => cell)) {
@@ -298,14 +244,10 @@ function checkForLines() {
             if (linesCleared % 5 === 0) {
                 level++;
                 dropInterval *= DROP_MULTIPLIER;
+                levelElement.textContent = "Level: " + level;
             }
             scoreElement.textContent = "Score: " + score;
-            levelElement.textContent = "Level: " + level;
         }
-            if (linesCleared % 5 === 0) {
-        level++;
-        dropInterval *= DROP_MULTIPLIER;
-        levelElement.textContent = "Level: " + level;
     }
 }
 
@@ -321,7 +263,6 @@ function isCollision(board, shape, posX, posY) {
     return false;
 }
 
-
 function moveShape(dx, dy) {
     if (!isCollision(board, currentShape, currentPos.x + dx, currentPos.y + dy)) {
         currentPos.x += dx;
@@ -329,8 +270,6 @@ function moveShape(dx, dy) {
         console.log('Shape moved to:', currentPos.x, currentPos.y);  // Debugging line
     }
 }
-
-
 
 function mergeBoard(board, shape, posX, posY) {
     for (let y = 0; y < shape.length; y++) {
@@ -353,42 +292,6 @@ function rotateShape() {
 let lastTime = 0;
 
 function gameLoop(timestamp) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    if (timestamp - lastTime > dropInterval) {
-        moveShape(0, 1); // This will try to move the shape down
-        lastTime = timestamp;
-    }
-    
-    drawShape();
-    requestAnimationFrame(gameLoop);
-}
-
-
-function startGame() {
-    resetBoard();
-    spawnShape();
-    gameLoop();
-}
-
-// Event Listeners
-pauseButton.addEventListener('click', togglePause);
-startButton.addEventListener('click', startGame);
-canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    handleTouchStart(e);
-});
-canvas.addEventListener('touchend', handleTouchEnd);
-canvas.addEventListener('touchmove', handleTouchMove);
-canvas.addEventListener('dblclick', rotateShape);
-document.addEventListener('keydown', handleKeyDown);
-
-function togglePause() {
-    isPaused = !isPaused;
-    pauseButton.innerText = isPaused ? "Resume" : "Pause";
-}
-
-function gameLoop(timestamp) {
     if (!isPaused) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -407,6 +310,23 @@ function startGame() {
     resetBoard();
     spawnShape();
     if (!isPaused) gameLoop();
+}
+
+// Event Listeners (continue from Section 2)
+pauseButton.addEventListener('click', togglePause);
+startButton.addEventListener('click', startGame);
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleTouchStart(e);
+});
+canvas.addEventListener('touchend', handleTouchEnd);
+canvas.addEventListener('touchmove', handleTouchMove);
+canvas.addEventListener('dblclick', rotateShape);
+document.addEventListener('keydown', handleKeyDown);
+
+function togglePause() {
+    isPaused = !isPaused;
+    pauseButton.innerText = isPaused ? "Resume" : "Pause";
 }
 
 // Don't auto-start the game
