@@ -189,17 +189,19 @@ function rotateShape() {
 }
 
 let lastTime = 0;
+
 function gameLoop(timestamp) {
-    if (!isPaused) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (timestamp - lastTime > dropInterval) {
-            dropShape();
-            lastTime = timestamp;
-        }
-        drawShape();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    if (timestamp - lastTime > dropInterval) {
+        moveShape(0, 1); // This will try to move the shape down
+        lastTime = timestamp;
     }
+    
+    drawShape();
     requestAnimationFrame(gameLoop);
 }
+
 
 function startGame() {
     resetBoard();
