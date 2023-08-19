@@ -204,7 +204,7 @@ function init() {
     dropInterval = INITIAL_DROP_INTERVAL;
     isPaused = false;
     currentShape = generateRandomShape();
-    currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 
     drawBoard();
     drawShape();
