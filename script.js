@@ -150,6 +150,10 @@ function checkForLines() {
             scoreElement.textContent = "Score: " + score;
             levelElement.textContent = "Level: " + level;
         }
+            if (linesCleared % 5 === 0) {
+        level++;
+        dropInterval *= DROP_MULTIPLIER;
+        levelElement.textContent = "Level: " + level;
     }
 }
 
@@ -168,8 +172,13 @@ function moveShape(dx, dy) {
     if (!isCollision(board, currentShape, currentPos.x + dx, currentPos.y + dy)) {
         currentPos.x += dx;
         currentPos.y += dy;
+    } else if (dy === 1) {  // If we were trying to move down and couldn't, merge the shape and spawn a new one
+        mergeBoard(board, currentShape, currentPos.x, currentPos.y);
+        checkForLines();
+        spawnShape();
     }
 }
+
 
 function mergeBoard(board, shape, posX, posY) {
     for (let y = 0; y < shape.length; y++) {
