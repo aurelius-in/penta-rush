@@ -358,15 +358,36 @@ function togglePause() {
     pauseButton.innerText = isPaused ? "Resume" : "Pause";
 }
 
-function handleKeyDown(e) {
-    if (!isPaused) {
-        if (e.key === 'ArrowLeft') moveShape(-1, 0);
-        else if (e.key === 'ArrowRight') moveShape(1, 0);
-        else if (e.key === 'ArrowDown') moveShape(0, 1);
-        else if (e.key === 'ArrowUp') rotateShape();
+function drawBoard() {
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (board[y][x]) {
+                drawBlock(x, y, board[y][x] - 1);
+            }
+        }
     }
 }
 
+function gameLoop(timestamp) {
+    if (!isPaused) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (timestamp - lastTime > dropInterval) {
+            moveShape(0, 1); // This will try to move the shape down
+            lastTime = timestamp;
+        }
     
-    
-startGame();
+        drawBoard();
+        drawShape();
+    }
+    requestAnimationFrame(gameLoop);
+}
+
+function startGame() {
+    resetBoard();
+    spawnShape();
+    if (!isPaused) gameLoop();
+}
+
+// Don't auto-start the game
+// startGame();
