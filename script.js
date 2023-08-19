@@ -8,27 +8,23 @@ const ctx = canvas.getContext("2d");
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
-const pauseButton = document.getElementById("pause");
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
 let level = 1;
 let linesCleared = 0;
-let dropInterval = 1000;
-const DROP_MULTIPLIER = 0.9;
+let dropInterval = INITIAL_DROP_INTERVAL;
 let isPaused = false;
 let currentShape = null;
-let currentPos = { x: 0, y: 0 };
+let currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 let lastTime = 0;
 
-// Current Shape Info
-// let currentShape = null;
-// let currentPos = { x: 0, y: 0 };
+
 
 // Shape Colors
-// const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
+const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 
 // Current Shape Info
 let currentShape = null;
@@ -207,8 +203,9 @@ function init() {
     currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
 
     drawBoard();
-    drawShape();
+    drawShape(currentShape, currentPos.x, currentPos.y); // Updated drawShape call
 }
+
 
 function gameLoop(timestamp) {
     if (!isPaused) {
@@ -225,11 +222,12 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
+
 function startGame() {
-    resetBoard();
     init();
     gameLoop();
 }
+
 
 function togglePause() {
     isPaused = !isPaused;
@@ -273,15 +271,15 @@ function handleKeyDown(event) {
   }
 }
 
-pauseButton.addEventListener('click', togglePause);
 startButton.addEventListener('click', startGame);
 canvas.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
-init(); // Initialize the game
+pauseButton.addEventListener('click', togglePause);
+canvas.focus(); // Ensure that the canvas is focused to receive key events
 
-// Add touch event listeners here (similar to the ones you had before)
+init(); // Initialize the game
 
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
