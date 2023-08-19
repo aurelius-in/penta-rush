@@ -264,7 +264,7 @@ canvas.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
-pauseButton.addEventListener('click', togglePause);
+// pauseButton.addEventListener('click', togglePause);
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
 init(); // Initialize the game
