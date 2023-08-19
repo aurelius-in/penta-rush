@@ -46,6 +46,8 @@ body {
 .pause-button {
     display: block;
     margin: 20px auto;
+    padding.pause-button {
+    margin: 10px;
     padding: 10px 20px;
     background-color: #e91e63; /* Pink color */
     color: #ffffff;
@@ -59,7 +61,7 @@ body {
 .pause-button:hover {
     background-color: #d81b60; /* Darker pink on hover */
 }
-
+    
 .top-section {
     width: 300px; /* Match the width of the canvas */
    
