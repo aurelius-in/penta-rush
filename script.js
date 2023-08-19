@@ -174,9 +174,10 @@ function rotateShape() {
 function checkCollision(shape, x, y) {
     for (let i = 0; i < shape.length; i++) {
         for (let j = 0; j < shape[i].length; j++) {
-            if (shape[i][j] && 
-                (board[y + i] && board[y + i][x + j]) !== 0) {
-                return true;
+            if (shape[i][j]) {
+                if (y + i < 0 || y + i >= ROWS || x + j < 0 || x + j >= COLS || board[y + i][x + j] !== 0) {
+                    return true;
+                }
             }
         }
     }
