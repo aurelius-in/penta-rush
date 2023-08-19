@@ -22,18 +22,27 @@ const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f
 let lastTime = 0;
 let touchStartX = 0;
 let touchStartY = 0;
+let touchStartTime = 0;
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
     touchStartY = event.touches[0].clientY;
+    touchStartTime = new Date().getTime(); // Record the touch start time
 }
 
 function handleTouchEnd(event) {
+    const touchEndTime = new Date().getTime();
+    const touchDuration = touchEndTime - touchStartTime;
     const touchEndX = event.changedTouches[0].clientX;
     const touchEndY = event.changedTouches[0].clientY;
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
 
+    // Check if the touch event is a tap (short duration and small movement)
+    if (touchDuration < 300 && Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+        rotateShape(); // Rotate the shape
+        return; // Exit the function to avoid handling as a swipe
+    }   
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
         // Horizontal swipe
         if (deltaX > 0) {
