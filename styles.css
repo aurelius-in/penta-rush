@@ -61,10 +61,11 @@ body {
 }
 
 .top-section {
+    width: 300px; /* Match the width of the canvas */
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 240px; /* Match the width of the canvas */
     margin-bottom: 15px;
 }
 
