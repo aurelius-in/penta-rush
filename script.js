@@ -54,14 +54,16 @@ function handleTouchEnd(event) {
     } else {
         // Vertical swipe
         if (deltaY > 0) {
-            // Swipe down
-            while (!checkCollision(currentShape, currentPos.x, currentPos.y + 1)) {
-                currentPos.y += 1; // Drop to the bottom
-            }
-            mergeShape();
-            currentShape = generateRandomShape();
-            currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
-        } else {
+    // Swipe down
+    while (!checkCollision(currentShape, currentPos.x, currentPos.y + 1) && currentPos.y < ROWS - 1) {
+        currentPos.y += 1; // Drop to the bottom
+    }
+    mergeShape();
+    currentShape = generateRandomShape();
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
+}
+
+            } else {
             // Swipe up
             currentShape = generateRandomShape(); // Change to the next shape
         }
