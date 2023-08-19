@@ -341,4 +341,32 @@ function startGame() {
     gameLoop();
 }
 
+// Event Listeners
+pauseButton.addEventListener('click', togglePause);
+startButton.addEventListener('click', startGame);
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleTouchStart(e);
+});
+canvas.addEventListener('touchend', handleTouchEnd);
+canvas.addEventListener('touchmove', handleTouchMove);
+canvas.addEventListener('dblclick', rotateShape);
+document.addEventListener('keydown', handleKeyDown);
+
+function togglePause() {
+    isPaused = !isPaused;
+    pauseButton.innerText = isPaused ? "Resume" : "Pause";
+}
+
+function handleKeyDown(e) {
+    if (!isPaused) {
+        if (e.key === 'ArrowLeft') moveShape(-1, 0);
+        else if (e.key === 'ArrowRight') moveShape(1, 0);
+        else if (e.key === 'ArrowDown') moveShape(0, 1);
+        else if (e.key === 'ArrowUp') rotateShape();
+    }
+}
+
+    
+    
 startGame();
