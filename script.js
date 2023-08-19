@@ -133,6 +133,7 @@ function dropShape() {
     }
 }
 
+
 function checkForLines() {
     for (let y = board.length - 1; y >= 0; y--) {
         if (board[y].every(cell => cell)) {
