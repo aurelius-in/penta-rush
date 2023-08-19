@@ -29,40 +29,39 @@ overflow: hidden; /* Prevent scrolling */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
 
-.start-button, .pause-button {
-    margin: 10px;
-}
-
 .start-button {
-    margin: 10px;
+    padding: 10px 20px;
+    background-color: #add8e6; /* Light blue color */
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem; /* Increase font size */
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 10px;
-    padding: 10px 15px; /* Reduce padding to make it smaller */
-    background-color: #2dbf67; /* Lighter green color */
+}
 
+.start-button:hover {
+    background-color: #90cfe0; /* Darker shade of blue on hover */
 }
 
 .pause-button {
     margin: 10px;
     padding: 10px 25px; /* Increase padding to make it wider */
     display: block;
-    background-color: #e91e63; /* Pink color */
+    background-color: #b22222; /* Darker shade of red */
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem; /* Increase font size */
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .pause-button:hover {
-    background-color: #d81b60; /* Darker pink on hover */
+    background-color: #9b1a1a; /* Even darker shade of red on hover */
 }
+
+
     
 .top-section {
     width: 300px; /* Match the width of the canvas */
