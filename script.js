@@ -133,37 +133,102 @@ function dropShape() {
     }
 }
 
-function generateLShape() {
-    const segment1 = getRandomSegment();
-    const segment2 = getRandomSegment();
-    const segment3 = getRandomSegment();
-    const segment4 = getRandomSegment();
-    const segment5 = getRandomSegment();
+function getRandomSegment() {
+    const randomIndex = Math.floor(Math.random() * blockImages.length) + 1;
+    return randomIndex;
+}
 
+function generateStraightShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
     return [
-        [segment1, 0, 0, 0, 0],
-        [segment2, 0, 0, 0, 0],
-        [segment3, 0, 0, 0, 0],
-        [segment4, 0, 0, 0, 0],
-        [segment5, segment5, 0, 0, 0]
+        [segments[0], 0, 0, 0, 0],
+        [segments[1], 0, 0, 0, 0],
+        [segments[2], 0, 0, 0, 0],
+        [segments[3], 0, 0, 0, 0],
+        [segments[4], 0, 0, 0, 0]
+    ];
+}
+
+function generateLShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
+    return [
+        [segments[0], 0, 0, 0, 0],
+        [segments[1], 0, 0, 0, 0],
+        [segments[2], 0, 0, 0, 0],
+        [segments[3], 0, 0, 0, 0],
+        [segments[4], segments[4], 0, 0, 0]
+    ];
+}
+
+function generateJShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
+    return [
+        [0, 0, 0, 0, segments[0]],
+        [0, 0, 0, 0, segments[1]],
+        [0, 0, 0, 0, segments[2]],
+        [0, 0, 0, 0, segments[3]],
+        [0, 0, 0, segments[4], segments[4]]
     ];
 }
 
 function generateTShape() {
-    const segment1 = getRandomSegment();
-    const segment2 = getRandomSegment();
-    const segment3 = getRandomSegment();
-    const segment4 = getRandomSegment();
-    const segment5 = getRandomSegment();
-
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
     return [
-        [segment1, segment2, segment3, 0, 0],
-        [segment4, 0, 0, 0, 0],
-        [segment5, 0, 0, 0, 0],
+        [segments[0], segments[1], segments[2], 0, 0],
+        [0, segments[3], 0, 0, 0],
+        [0, segments[4], 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
 }
+
+function generateZShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
+    return [
+        [segments[0], segments[1], 0, 0, 0],
+        [0, segments[2], 0, 0, 0],
+        [0, segments[3], segments[4], 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateSShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
+    return [
+        [0, segments[0], segments[1], 0, 0],
+        [0, segments[2], 0, 0, 0],
+        [segments[3], segments[4], 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateUShape() {
+    const segments = Array(5).fill(0).map(_ => getRandomSegment());
+    return [
+        [segments[0], 0, segments[1], 0, 0],
+        [segments[2], segments[3], segments[4], 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateRandomShape() {
+    const shapeGenerators = [
+        generateStraightShape, 
+        generateLShape, 
+        generateJShape, 
+        generateTShape, 
+        generateZShape, 
+        generateSShape, 
+        generateUShape
+    ];
+    const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
+    return shapeGenerators[randomIndex]();
+}
+
 
 
 function checkForLines() {
