@@ -21,7 +21,7 @@ BLOCK_IMAGES.forEach((src, index) => {
   img.onload = () => {
     imagesLoaded++;
     if (imagesLoaded === BLOCK_IMAGES.length) {
-      startButton.disabled = false; // Enable the start button
+      startButton.disabled = true; // Enable the start button
     }
   };
   blockImages[index] = img; // Store the image object in the array
