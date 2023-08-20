@@ -13,6 +13,7 @@ const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
 startButton.disabled = true; // Disable the start button initially
 
+/*
 const blockImages = [];
 let imagesLoaded = 0;
 BLOCK_IMAGES.forEach((src, index) => {
@@ -26,6 +27,8 @@ BLOCK_IMAGES.forEach((src, index) => {
   };
   blockImages[index] = img; // Store the image object in the array
 });
+*/
+
 
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
@@ -318,9 +321,8 @@ function togglePause() {
         gameLoop();
     }
 }
-
-// Draw Segment Function
 function drawSegment(x, y, colorIndex) {
+  /*
   if (imagesLoaded === BLOCK_IMAGES.length) { // Check if all images are loaded
     const img = blockImages[board[y][x]];
     if (img) {
@@ -328,6 +330,7 @@ function drawSegment(x, y, colorIndex) {
       return; // Exit if image is drawn
     }
   }
+  */
 
   // Fallback to drawing a rectangle if the image is not loaded
   ctx.fillStyle = SHAPES_COLORS[colorIndex]; // Use the color index directly
