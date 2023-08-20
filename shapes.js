@@ -116,18 +116,19 @@ export const SHAPES = [
 
 // Define the corresponding block images for each shape
 export const BLOCK_IMAGES = [
-    "block01.png",
-    "block02.png",
-    "block03.png",
-    "block04.png",
-    "block05.png",
-    "block06.png",
-    "block07.png",
-    "block08.png",
-    "block09.png",
-    "block10.png",
-    "block11.png",
-    "block12.png",
-    "block13.png",
-    "block14.png"
+    "assets/images/block01.png",
+    "assets/images/block02.png",
+    "assets/images/block03.png",
+    "assets/images/block04.png",
+    "assets/images/block05.png",
+    "assets/images/block06.png",
+    "assets/images/block07.png",
+    "assets/images/block08.png",
+    "assets/images/block09.png",
+    "assets/images/block10.png",
+    "assets/images/block11.png",
+    "assets/images/block12.png",
+    "assets/images/block13.png",
+    "assets/images/block14.png"
 ];
+
