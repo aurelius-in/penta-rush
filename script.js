@@ -2,7 +2,7 @@ import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 
 // Board Initialization
 const INITIAL_DROP_INTERVAL = 999;
-const COLS = 15;
+const COLS = 20;
 const ROWS = 25;
 const BLOCK_SIZE = 20;
 const canvas = document.getElementById("board");
