@@ -12,11 +12,19 @@ const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
 
 const blockImages = [];
+let imagesLoaded = 0;
 BLOCK_IMAGES.forEach((src, index) => {
   const img = new Image();
   img.src = src;
+  img.onload = () => {
+    imagesLoaded++;
+    if (imagesLoaded === BLOCK_IMAGES.length) {
+      // All images are loaded, you can start the game or enable the start button here
+    }
+  };
   blockImages[index] = img;
 });
+
 
 
 canvas.width = COLS * BLOCK_SIZE;
