@@ -309,10 +309,17 @@ function togglePause() {
 
 
 // Draw Segment Function
-function drawSegment(x, y, color) {
-  ctx.fillStyle = color;
-  ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+function drawSegment(x, y, colorIndex) {
+  const img = blockImages[colorIndex];
+  if (img) {
+    ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+  } else {
+    // Fallback to drawing a rectangle if the image is not loaded
+    ctx.fillStyle = COLORS[colorIndex];
+    ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+  }
 }
+
 
 // Draw Board Function
 function drawBoard() {
