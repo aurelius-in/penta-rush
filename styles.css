@@ -6,22 +6,25 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #282c34;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #ffffff;
-    flex-direction: column;
-    overflow: hidden; /* Prevent scrolling */
-    touch-action: none; /* Disable default touch actions */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #282c34;
+  color: #ffffff;
+}
+
+#game-container {
+  width: 100%;
+  max-width: calc(100% - 2 * BLOCK_SIZE); /* Adjust the width */
+  padding: 0 BLOCK_SIZE; /* One block-width padding on the left and right */
 }
 
 #game-title {
-  margin: 0; /* Remove margin to move the title to the top */
+  margin: 10px 0; /* Adjust margin as needed */
   text-align: center;
   font-size: 2rem;
 }
@@ -39,21 +42,15 @@ body {
   margin: 5px 0; /* Adjust margin as needed */
 }
 
-#score, #level {
-  margin: 5px; /* Adjust margin as needed */
-  text-align: center;
-}
-    
-#game-container {
-  width: calc(100% - 2 * BLOCK_SIZE); /* Adjust the width */
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 #game-canvas {
   width: 100%;
   height: auto;
   border: 1px solid #000;
+}
+
+#score, #level {
+  margin: 3px; /* Adjust margin as needed */
+  text-align: center;
 }
 
 #score, #level, .pause-button {
@@ -62,7 +59,7 @@ body {
 
 #board {
     margin-top: 30px;
-    border: 4px solid #ffffff;
+    border: 3px solid #ffffff;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
 
@@ -80,15 +77,6 @@ body {
     background-color: #90cfe0; /* Darker shade of blue on hover */
 }
     
-.top-section {
-    width: 300px; /* Match the width of the canvas */
-   
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
 .start-button {
     padding: 10px 20px;
     background-color: #4caf50; /* Green color */
