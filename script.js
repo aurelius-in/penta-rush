@@ -43,6 +43,7 @@ let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
 
 function startTimer(duration) {
+  setInterval(countDown, 1000); 
   var timer = duration, minutes, seconds;
   setInterval(function () {
     minutes = parseInt(timer / 60, 10);
@@ -306,6 +307,7 @@ function gameLoop(timestamp) {
 function startGame() {
     init();
     gameLoop();
+  updateGameArea(); 
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
