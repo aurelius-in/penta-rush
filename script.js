@@ -321,15 +321,19 @@ function togglePause() {
 
 // Draw Segment Function
 function drawSegment(x, y, colorIndex) {
-  const img = blockImages[board[y][x]]; // Use the value from the board
-  if (img) {
-    ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-  } else {
-    // Fallback to drawing a rectangle if the image is not loaded
-    ctx.fillStyle = SHAPES_COLORS[board[y][x]]; // Updated to use colors from board
-    ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+  if (imagesLoaded === BLOCK_IMAGES.length) { // Check if all images are loaded
+    const img = blockImages[board[y][x]];
+    if (img) {
+      ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+      return; // Exit if image is drawn
+    }
   }
+
+  // Fallback to drawing a rectangle if the image is not loaded
+  ctx.fillStyle = SHAPES_COLORS[colorIndex]; // Use the color index directly
+  ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
+
 
 // Draw Board Function
 function drawBoard() {
