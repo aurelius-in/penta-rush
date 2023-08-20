@@ -103,11 +103,15 @@ body {
   margin-left: 20px; /* Space to the left of the level */
 }
 
-
 #start, #pause {
-  font-size: 20px; /* Adjust the size as needed */
-  padding: 10px 20px; /* Add space around the buttons */
+  font-size: 40px; /* Increase the font size */
+  padding: 0; /* Remove padding */
+  width: 40px; /* Set the width */
+  height: 40px; /* Set the height */
+  line-height: 40px; /* Center the symbol vertically */
+  text-align: center; /* Center the symbol horizontally */
 }
+
 
 #score, #level {
     text-align: center;
