@@ -25,9 +25,6 @@ BLOCK_IMAGES.forEach((src, index) => {
   blockImages[index] = img;
 });
 
-
-
-
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
@@ -45,6 +42,17 @@ let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
 
+function startTimer(duration) {
+  var timer = duration, minutes, seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    // Update the timer display here
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
@@ -84,7 +92,6 @@ function handleTouchEnd(event) {
     currentShape = generateRandomShape();
     currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
 }
-
             } else {
             // Swipe up
             currentShape = generateRandomShape(); // Change to the next shape
@@ -109,8 +116,6 @@ function clearLines() {
         }
     }
 }
-
-
 
 function handleTouchTap() {
     rotateShape(); // Rotate the shape
@@ -278,7 +283,6 @@ function init() {
     isPaused = false;
     currentShape = generateRandomShape();
     currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 }; // Keep this initialization
-
     drawBoard();
     drawShape(currentShape, currentPos.x, currentPos.y);
 }
@@ -293,19 +297,16 @@ function gameLoop(timestamp) {
             moveShapeDown();
             lastTime = timestamp;
         }
-
         drawBoard();
         drawShape(currentShape, currentPos.x, currentPos.y); // Add arguments
     }
     requestAnimationFrame(gameLoop);
 }
 
-
 function startGame() {
     init();
     gameLoop();
 }
-
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
 
@@ -315,7 +316,6 @@ function togglePause() {
         gameLoop();
     }
 }
-
 
 // Draw Segment Function
 function drawSegment(x, y, colorIndex) {
@@ -328,8 +328,6 @@ function drawSegment(x, y, colorIndex) {
     ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   }
 }
-
-
 
 // Draw Board Function
 function drawBoard() {
