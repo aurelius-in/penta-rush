@@ -11,7 +11,8 @@ const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
-startButton.disabled = true; // Disable the start button initially
+// startButton.disabled = true; // Disable the start button initially
+
 
 /*
 const blockImages = [];
