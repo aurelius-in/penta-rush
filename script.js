@@ -19,11 +19,12 @@ BLOCK_IMAGES.forEach((src, index) => {
   img.onload = () => {
     imagesLoaded++;
     if (imagesLoaded === BLOCK_IMAGES.length) {
-      // All images are loaded, you can start the game or enable the start button here
+      startButton.disabled = false; // Enable the start button
     }
   };
   blockImages[index] = img;
 });
+
 
 
 
