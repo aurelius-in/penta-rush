@@ -4,7 +4,9 @@ import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 20;
 const ROWS = 30;
-const BLOCK_SIZE = (canvas.width - 2 * MARGIN) / COLS;
+canvas.width = COLS * BLOCK_SIZE;
+canvas.height = ROWS * BLOCK_SIZE;
+const BLOCK_SIZE = canvas.width / COLS;
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
@@ -14,7 +16,7 @@ const startButton = document.getElementById("start");
 const blockImages = [];
 let imagesLoaded = 0;
 BLOCK_IMAGES.forEach((src, index) => {
-  const img = blockImages[colorIndex]; // Use the color index
+  const img = new Image(); // Create a new Image object
   img.src = src;
   img.onload = () => {
     imagesLoaded++;
@@ -22,11 +24,9 @@ BLOCK_IMAGES.forEach((src, index) => {
       startButton.disabled = false; // Enable the start button
     }
   };
-  blockImages[index] = img;
+  blockImages[index] = img; // Store the image object in the array
 });
 
-canvas.width = COLS * BLOCK_SIZE;
-canvas.height = ROWS * BLOCK_SIZE;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
 let level = 1;
@@ -327,7 +327,7 @@ function drawSegment(x, y, colorIndex) {
     ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   } else {
     // Fallback to drawing a rectangle if the image is not loaded
-    ctx.fillStyle = COLORS[colorIndex];
+    ctx.fillStyle = SHAPES_COLORS[colorIndex];
     ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   }
 }
