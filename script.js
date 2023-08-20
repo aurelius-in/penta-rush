@@ -3,7 +3,7 @@ import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 20;
 const ROWS = 30;
-const canvas = document.getElementById('game-canvas');
+const canvas = document.getElementById('board');
 const BLOCK_SIZE = canvas.width / COLS; // Moved up
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
