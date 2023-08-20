@@ -310,7 +310,7 @@ function togglePause() {
 
 // Draw Segment Function
 function drawSegment(x, y, colorIndex) {
-  const img = blockImages[colorIndex];
+  const img = blockImages[board[y][x]]; // Use the value from the board
   if (img) {
     ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   } else {
@@ -319,6 +319,7 @@ function drawSegment(x, y, colorIndex) {
     ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   }
 }
+
 
 
 // Draw Board Function
