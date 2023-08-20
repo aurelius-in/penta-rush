@@ -4,9 +4,9 @@ import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 20;
 const ROWS = 30;
-const BLOCK_SIZE = 20;
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+const BLOCK_SIZE = canvas.width / COLS; // Calculate block size based on canvas width
+const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
