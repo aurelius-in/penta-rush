@@ -95,6 +95,10 @@ body {
     background-color: #388e3c; /* Darker green on hover */
 }
 
+#start, #pause {
+  font-size: 20px; /* Adjust the size as needed */
+  padding: 10px 20px; /* Add space around the buttons */
+}
 
 #score, #level {
     text-align: center;
