@@ -19,15 +19,15 @@ overflow: hidden; /* Prevent scrolling */
 }
     
 #game-container {
-  width: 100%; /* Set the container width to 100% of the parent element */
-  max-width: 800px; /* You can set a maximum width if needed */
-  margin: 0 auto; /* Center the container and remove outer margins */
+  width: calc(100% - 2 * BLOCK_SIZE); /* Adjust the width */
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 #game-canvas {
-  width: 100%; /* Set the canvas width to 100% of the container */
-  height: auto; /* Maintain the aspect ratio */
-  border: 1px solid #000; /* Optional border */
+  width: 100%;
+  height: auto;
+  border: 1px solid #000;
 }
 
 #score, #level, .pause-button {
