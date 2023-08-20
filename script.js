@@ -1,13 +1,12 @@
 import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 
-// Board Initialization
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 20;
 const ROWS = 30;
+const canvas = document.getElementById('game-canvas');
+const BLOCK_SIZE = canvas.width / COLS; // Moved up
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
-const BLOCK_SIZE = canvas.width / COLS;
-const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
@@ -327,7 +326,7 @@ function drawSegment(x, y, colorIndex) {
     ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   } else {
     // Fallback to drawing a rectangle if the image is not loaded
-    ctx.fillStyle = SHAPES_COLORS[colorIndex];
+    ctx.fillStyle = SHAPES_COLORS[board[y][x]]; // Updated to use colors from board
     ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   }
 }
