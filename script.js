@@ -46,17 +46,18 @@ let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
 
+// Modify startTimer function to handle countdown
 function startTimer(duration) {
-  setInterval(countDown, 1000); 
-  var timer = duration, minutes, seconds;
-  setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-    // Update the timer display here
-    if (--timer < 0) {
-      timer = duration;
-    }
-  }, 1000);
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        // Update the timer display here
+        document.getElementById('timer').textContent = minutes + ':' + seconds;
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
 
 function handleTouchStart(event) {
