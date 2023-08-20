@@ -14,7 +14,7 @@ const startButton = document.getElementById("start");
 const blockImages = [];
 let imagesLoaded = 0;
 BLOCK_IMAGES.forEach((src, index) => {
-  const img = new Image();
+  const img = blockImages[colorIndex]; // Use the color index
   img.src = src;
   img.onload = () => {
     imagesLoaded++;
