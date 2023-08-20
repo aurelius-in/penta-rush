@@ -4,7 +4,7 @@ import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 const INITIAL_DROP_INTERVAL = 999;
 const COLS = 20;
 const ROWS = 30;
-const BLOCK_SIZE = (canvas.width - 2 * BLOCK_SIZE) / COLS; // Adjust the block size
+const BLOCK_SIZE = (canvas.width - 2 * MARGIN) / COLS;
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
@@ -308,6 +308,7 @@ function startGame() {
     init();
     gameLoop();
   updateGameArea(); 
+  startTimer();
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
@@ -361,6 +362,7 @@ function handleKeyDown(event) {
 }
 
 startButton.addEventListener('click', startGame);
+
 document.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
