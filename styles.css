@@ -18,6 +18,17 @@ overflow: hidden; /* Prevent scrolling */
     touch-action: none; /* Disable default touch actions */
 }
     
+#game-container {
+  width: 100%; /* Set the container width to 100% of the parent element */
+  max-width: 800px; /* You can set a maximum width if needed */
+  margin: 0 auto; /* Center the container and remove outer margins */
+}
+
+#game-canvas {
+  width: 100%; /* Set the canvas width to 100% of the container */
+  height: auto; /* Maintain the aspect ratio */
+  border: 1px solid #000; /* Optional border */
+}
 
 #score, #level, .pause-button {
     margin-top: 15px;
