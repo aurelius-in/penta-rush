@@ -131,11 +131,18 @@ function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
 }
 
-// Shapes Generation
+// Remove the duplicate definition of generateRandomShape
 function generateRandomShape() {
-    const shape = SHAPES[currentShapeIndex];
-    currentShapeIndex = (currentShapeIndex + 1) % SHAPES.length; // Cycle through the shapes iteratively
-    return shape;
+    const shapeGenerators = [
+        generateStraightShape, 
+        generateSquareShape, 
+        generateTShape, 
+        generateZShape, 
+        generateSShape, 
+        generateUShape
+    ];
+    const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
+    return shapeGenerators[randomIndex]();
 }
 
 function generateSquareShape() {
@@ -143,7 +150,7 @@ function generateSquareShape() {
     return [
         [0, 0, segment, segment, 0],
         [0, 0, segment, segment, 0],
-        [0, 0, 0, 0, 0],
+        [0, 0, segment, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
@@ -154,7 +161,7 @@ function generateTShape() {
     return [
         [0, segment, 0, 0, 0],
         [segment, segment, segment, 0, 0],
-        [0, 0, 0, 0, 0],
+        [segment, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
@@ -165,7 +172,7 @@ function generateZShape() {
     return [
         [segment, segment, 0, 0, 0],
         [0, segment, segment, 0, 0],
-        [0, 0, 0, 0, 0],
+        [0, 0, segment, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
@@ -176,7 +183,7 @@ function generateSShape() {
     return [
         [0, segment, segment, 0, 0],
         [segment, segment, 0, 0, 0],
-        [0, 0, 0, 0, 0],
+        [0, 0, segment, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
@@ -323,8 +330,7 @@ function gameLoop(timestamp) {
 function startGame() {
     init();
     gameLoop();
-    updateGameArea();
-    startTimer(60); // Add duration here
+    startTimer(60); // Start the timer with a duration of 60 seconds
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
