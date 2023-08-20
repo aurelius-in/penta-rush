@@ -322,8 +322,8 @@ function gameLoop(timestamp) {
 function startGame() {
     init();
     gameLoop();
-  updateGameArea(); 
-  startTimer();
+    updateGameArea();
+    startTimer(60); // Add duration here
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
