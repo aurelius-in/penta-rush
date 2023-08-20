@@ -6,6 +6,8 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Arial', sans-serif;
     background-color: #282c34;
     display: flex;
@@ -14,8 +16,32 @@ body {
     height: 100vh;
     color: #ffffff;
     flex-direction: column;
-overflow: hidden; /* Prevent scrolling */
+    overflow: hidden; /* Prevent scrolling */
     touch-action: none; /* Disable default touch actions */
+}
+
+#game-title {
+  margin: 0; /* Remove margin to move the title to the top */
+  text-align: center;
+  font-size: 2rem;
+}
+
+#timer {
+  margin: 5px 0; /* Adjust margin as needed */
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0; /* Adjust margin as needed */
+}
+
+#score, #level {
+  margin: 5px; /* Adjust margin as needed */
+  text-align: center;
 }
     
 #game-container {
