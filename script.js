@@ -11,6 +11,7 @@ const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
+startButton.disabled = true; // Disable the start button initially
 
 const blockImages = [];
 let imagesLoaded = 0;
@@ -204,8 +205,7 @@ function drawShape(shape, x, y) {
     for (let i = 0; i < shape.length; i++) {
         for (let j = 0; j < shape[i].length; j++) {
             if (shape[i][j]) {
-                const blockImage = BLOCK_IMAGES[shape[i][j]]; // Get the block image for the shape
-                drawSegment(x + j, y + i, blockImage); // Use the block image to draw the segment
+                drawSegment(x + j, y + i, shape[i][j]); // Pass the color index
             }
         }
     }
