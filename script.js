@@ -342,16 +342,7 @@ function togglePause() {
     }
 }
 function drawSegment(x, y, colorIndex) {
-  /*
-  if (imagesLoaded === BLOCK_IMAGES.length) { // Check if all images are loaded
-    const img = blockImages[board[y][x]];
-    if (img) {
-      ctx.drawImage(img, x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-      return; // Exit if image is drawn
-    }
-  }
-  */
-  ctx.fillStyle = colorIndex; // Use the color index directly
+  ctx.fillStyle = SHAPES_COLORS[colorIndex]; // Use the correct color from the array
   ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
 
