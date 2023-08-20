@@ -10,6 +10,15 @@ const ctx = canvas.getContext("2d");
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
 const startButton = document.getElementById("start");
+
+const blockImages = [];
+BLOCK_IMAGES.forEach((src, index) => {
+  const img = new Image();
+  img.src = src;
+  blockImages[index] = img;
+});
+
+
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
