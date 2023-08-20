@@ -345,19 +345,16 @@ function drawSegment(x, y, colorIndex) {
     }
   }
   */
-
-  // Fallback to drawing a rectangle if the image is not loaded
-  ctx.fillStyle = SHAPES_COLORS[colorIndex]; // Use the color index directly
+  ctx.fillStyle = colorIndex; // Use the color index directly
   ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
 }
-
 
 // Draw Board Function
 function drawBoard() {
   for (let y = 0; y < ROWS; y++) {
     for (let x = 0; x < COLS; x++) {
       if (board[y][x]) {
-        drawSegment(x, y, SHAPES_COLORS[board[y][x]]);
+        drawSegment(x, y, board[y][x]); // Pass the color index
       }
     }
   }
