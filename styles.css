@@ -95,6 +95,15 @@ body {
     background-color: #388e3c; /* Darker green on hover */
 }
 
+#start {
+  margin-right: 20px; /* Space to the right of the play button */
+}
+
+#level {
+  margin-left: 20px; /* Space to the left of the level */
+}
+
+
 #start, #pause {
   font-size: 20px; /* Adjust the size as needed */
   padding: 10px 20px; /* Add space around the buttons */
