@@ -384,7 +384,7 @@ function handleKeyDown(event) {
   }
 }
 
-startButton.addEventListener('click', startGame);
+// startButton.addEventListener('click', startGame);
 
 document.addEventListener('keydown', handleKeyDown);
 
