@@ -370,7 +370,8 @@ document.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
 
-init(); // Initialize the game
+// Initialize the game
+init();
 
 pauseButton.addEventListener('click', togglePause); // Add event listener
 canvas.addEventListener('touchstart', handleTouchStart);
