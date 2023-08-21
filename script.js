@@ -15,8 +15,8 @@ STRAIGHT_COLOR_INDEX,
   U_SHAPE_COLOR_INDEX
 } from './shapes.js';
 
-const COLS = 25;
-const ROWS = 40;
+const COLS = 20;
+const ROWS = 35;
 const canvas = document.getElementById('board');
 const gameContainer = document.getElementById('game-container');
 const BLOCK_SIZE = gameContainer.offsetWidth / COLS;
@@ -73,7 +73,6 @@ function decrementTimer() {
   document.getElementById('timer').textContent = minutes + ':' + seconds;
   if (timer >= 0) timer--;
 }
-
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
