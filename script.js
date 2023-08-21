@@ -1,5 +1,3 @@
-import { SHAPES, BLOCK_IMAGES } from './shapes.js';
-
 const COLS = 30; // Increase the number of columns
 const ROWS = 35; // Increase the number of rows
 const canvas = document.getElementById('board');
