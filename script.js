@@ -25,6 +25,16 @@ let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
+const SQUARE_COLOR_INDEX = 1;
+const T_SHAPE_COLOR_INDEX = 2;
+const Z_SHAPE_COLOR_INDEX = 3;
+const A_SHAPE_COLOR_INDEX = 4;
+const B_SHAPE_COLOR_INDEX = 5;
+const C_SHAPE_COLOR_INDEX = 6;
+const D_SHAPE_COLOR_INDEX = 7;
+const E_SHAPE_COLOR_INDEX = 8;
+const F_SHAPE_COLOR_INDEX = 9;
+const G_SHAPE_COLOR_INDEX = 10;
 
 const playPauseButton = document.getElementById('playPause');
 
@@ -119,6 +129,17 @@ function handleTouchTap() {
     rotateShape(); // Rotate the shape
 }
 
+function generateAShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, segment, segment, segment, 0],
+        [0, segment, 0, 0, 0],
+        [0, , 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
 function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
 }
@@ -133,6 +154,73 @@ function generateSquareShape() {
         [0, 0, 0, 0, 0]
     ];
 }
+
+function generateBShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, segment, segment, 0, 0],
+        [0, 0, segment, 0, 0],
+        [0, 0, segment, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateCShape() {
+    const segment = getRandomSegment();
+    return [
+        [0, 0, segment, segment, 0],
+        [0, 0, segment, segment, 0],
+        [0, 0, 0, segment, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateDShape() {
+    const segment = getRandomSegment();
+    return [
+        [0, segment, 0, 0, 0],
+        [segment, segment, segment, 0, 0],
+        [0, segment, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateEShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, 0, 0, 0, 0],
+        [segment, 0, 0, 0, 0],
+        [segment, segment, segment, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateFShape() {
+    const segment = getRandomSegment();
+    return [
+        [0, 0, segment, 0, 0],
+        [0, 0, segment, 0, 0],
+        [segment, segment, segment, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
+function generateGShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, segment, 0, 0, 0],
+        [segment, 0, 0, 0, 0],
+        [segment, 0, 0, 0, 0],
+        [segment, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
+
 
 function generateTShape() {
     const segment = getRandomSegment();
@@ -149,19 +237,20 @@ function generateZShape() {
     const segment = getRandomSegment();
     return [
         [segment, segment, 0, 0, 0],
-        [0, segment, segment, 0, 0],
-        [0, 0, segment, 0, 0],
-        [0, 0, 0, 0, 0],
+        [0, segment, 0, 0, 0],
+        [0, segment, 0, 0, 0],
+        [0, segment, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
 }
+
 
 function generateSShape() {
     const segment = getRandomSegment();
     return [
         [0, segment, segment, 0, 0],
         [segment, segment, 0, 0, 0],
-        [0, 0, segment, 0, 0],
+        [0, segment, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
@@ -184,7 +273,14 @@ function generateRandomShape() {
         generateSquareShape, 
         generateTShape, 
         generateZShape, 
-        generateSShape, 
+        generateSShape,
+generateAShape, 
+generateBShape, 
+generateCShape, 
+generateDShape, 
+generateEShape, 
+generateFShape, 
+generateGShape, 
         generateUShape
     ];
     const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
