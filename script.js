@@ -120,24 +120,33 @@ function handleTouchEnd(event) {
 }
 
 function clearLines() {
-  for (let y = 0; y < ROWS; y++) {
-    let isLineFull = true;
-    for (let x = 0; x < COLS; x++) {
-      if (board[y][x] === 0) {
-        isLineFull = false;
-        break;
-      }
-    }
-    if (isLineFull) {
-      // Remove the line and add a new empty line at the top
-      board.splice(y, 1);
-      board.unshift(Array(COLS).fill(0));
-      level++; // Increment the level
-      // Perform animation or other actions as needed
-      board = Array.from({ length: ROWS }, () => Array(COLS).fill(0)); // Clear the board
+  let linesCleared = 0; // Keep track of the number of lines cleared
+
+  for (let row = 0; row < BOARD_HEIGHT; row++) {
+    if (board[row].every(segment => segment)) {
+      // Call the animation function for the cleared row
+      animateClearedLine(row);
+
+      // Increment the number of lines cleared
+      linesCleared++;
     }
   }
+
+  if (linesCleared > 0) {
+    // Increase the level number
+    level++;
+
+    // Update the score based on the level points and lines cleared
+    score += level * linesCleared + 11;
+
+    // Update the level and score display on the screen
+    document.getElementById('level').innerText = `Level: ${level}`;
+    document.getElementById('score').innerText = `Score: ${score}`;
+
+    // Optionally, you can add logic to increase the game speed or difficulty based on the new level
+  }
 }
+
 
 function handleTouchTap() {
     rotateShape(); // Rotate the shape
