@@ -429,9 +429,14 @@ function togglePause() {
         gameLoop();
     }
 }
-function drawSegment(x, y, colorIndex) {
-  ctx.fillStyle = SHAPES_COLORS[colorIndex]; // Use the correct color from the array
-  ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+function drawSegment(x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
+
+    // Add a thin grey outline
+    ctx.strokeStyle = "#808080"; // Grey color
+    ctx.lineWidth = 1; // Thin line width
+    ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 }
 
 // Draw Board Function
