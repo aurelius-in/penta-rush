@@ -11,6 +11,12 @@
 .color9 { color: #33FF57; }
 .color10 { color: #33A1FF; }
 
+#game-title span {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
 #game-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 2rem;
