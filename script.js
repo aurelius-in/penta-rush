@@ -1,7 +1,7 @@
 import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 
-const INITIAL_DROP_INTERVAL = 899;
-const COLS = 20;
+const INITIAL_DROP_INTERVAL = 700; // Faster falling
+const COLS = 25;
 const ROWS = 30;
 const canvas = document.getElementById('board');
 const BLOCK_SIZE = canvas.width / COLS; // Moved up
@@ -23,6 +23,7 @@ let lastTime = 0;
 let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
+let timerInterval; // Declare a variable to hold the timer interval
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
 const SQUARE_COLOR_INDEX = 1;
 const T_SHAPE_COLOR_INDEX = 2;
