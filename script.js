@@ -151,6 +151,9 @@ function clearLines() {
     // Increase the level number
     level++;
 
+    // Add the remaining seconds to the score
+    score += timer * 2;
+
     // Update the score based on the level points and lines cleared
     score += level * linesCleared + 11;
 
@@ -160,10 +163,13 @@ function clearLines() {
 
     // Increase the game speed by 15% for the new level
     dropInterval *= 0.85; // 85% of the current drop interval
+
+    // Restart the timer
+    clearInterval(timerInterval);
+    timer = 180; // Reset to 3 minutes
+    startTimer();
   }
 }
-
-
 
 function handleTouchTap() {
     rotateShape(); // Rotate the shape
