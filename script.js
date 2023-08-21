@@ -19,7 +19,6 @@ let dropInterval = INITIAL_DROP_INTERVAL;
 let isPaused = false;
 let currentShape = null;
 let currentPos = { x: Math.floor(COLS / 2) - 2, y: 2 };
-const SHAPES_COLORS = [null, "#f00", "#0f0", "#00f", "#ff0", "#0ff", "#f0f", "#f90"];
 let lastTime = 0;
 let touchStartX = 0;
 let touchStartY = 0;
@@ -35,6 +34,19 @@ const D_SHAPE_COLOR_INDEX = 7;
 const E_SHAPE_COLOR_INDEX = 8;
 const F_SHAPE_COLOR_INDEX = 9;
 const G_SHAPE_COLOR_INDEX = 10;
+const SHAPES_COLORS = [
+  null, // No color for index 0
+  "#f00", // Color for shape 1
+  "#0f0", // Color for shape 2
+  "#00f", // Color for shape 3
+  "#ff0", // Color for shape 4
+  "#0ff", // Color for shape 5
+  "#f0f", // Color for shape 6
+  "#f90", // Color for shape 7
+  "#90f", // Color for shape 8
+  "#09f", // Color for shape 9
+  "#f09"  // Color for shape 10
+];
 
 const playPauseButton = document.getElementById('playPause');
 
