@@ -426,8 +426,8 @@ function gameLoop(timestamp) {
 function startGame() {
   init();
   gameLoop();
-  startTimer(60); // Start the timer with a duration of 60 seconds
-  playPauseButton.textContent = '⏸️'; // Set the initial symbol to pause since the game starts automatically
+  startTimer(120); // Start the timer with a duration of 2 minutes
+  playPauseButton.textContent = '⏸️';
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
@@ -439,13 +439,13 @@ function togglePause() {
     }
 }
 function drawSegment(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
+  ctx.fillStyle = color;
+  ctx.fillRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 
-    // Add a thin grey outline
-    ctx.strokeStyle = "#808080"; // Grey color
-    ctx.lineWidth = 3; // Thin line width
-    ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
+  // Add a thicker grey outline
+  ctx.strokeStyle = "#808080";
+  ctx.lineWidth = 5; // Thicker line width
+  ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 }
 
 // Draw Board Function
