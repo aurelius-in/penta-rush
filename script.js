@@ -25,7 +25,6 @@ let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
-let isPaused = false;
 
 const playPauseButton = document.getElementById('playPause');
 
@@ -125,20 +124,6 @@ function handleTouchTap() {
 
 function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
-}
-
-// Remove the duplicate definition of generateRandomShape
-function generateRandomShape() {
-    const shapeGenerators = [
-        generateStraightShape, 
-        generateSquareShape, 
-        generateTShape, 
-        generateZShape, 
-        generateSShape, 
-        generateUShape
-    ];
-    const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
-    return shapeGenerators[randomIndex]();
 }
 
 function generateSquareShape() {
