@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#title {
+  font-family: 'Press Start 2P', cursive;
+  margin: 10px 0; /* Adjust margin as needed */
+  text-align: center;
+  font-size: 2rem;
+}
+
 /* Resetting default margin and padding */
 * {
     margin: 0;
@@ -29,12 +38,6 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-}
-
-#game-title {
-  margin: 10px 0; /* Adjust margin as needed */
-  text-align: center;
-  font-size: 2rem;
 }
 
 #timer {
