@@ -130,7 +130,7 @@ function handleTouchTap() {
 }
 
 function generateAShape() {
-    const segment = getRandomSegment();
+    const segment = A_SHAPE_COLOR_INDEX;
     return [
         [segment, segment, segment, segment, 0],
         [0, segment, 0, 0, 0],
@@ -145,7 +145,7 @@ function getRandomSegment() {
 }
 
 function generateSquareShape() {
-    const segment = getRandomSegment();
+    const segment = SQUARE_COLOR_INDEX;
     return [
         [0, 0, segment, segment, 0],
         [0, 0, segment, segment, 0],
@@ -156,7 +156,7 @@ function generateSquareShape() {
 }
 
 function generateBShape() {
-    const segment = getRandomSegment();
+    const segment = B_SHAPE_COLOR_INDEX;
     return [
         [segment, segment, segment, 0, 0],
         [0, 0, segment, 0, 0],
@@ -167,7 +167,7 @@ function generateBShape() {
 }
 
 function generateCShape() {
-    const segment = getRandomSegment();
+    const segment = C_SHAPE_COLOR_INDEX;
     return [
         [0, 0, segment, segment, 0],
         [0, 0, segment, segment, 0],
@@ -178,7 +178,7 @@ function generateCShape() {
 }
 
 function generateDShape() {
-    const segment = getRandomSegment();
+    const segment = D_SHAPE_COLOR_INDEX;
     return [
         [0, segment, 0, 0, 0],
         [segment, segment, segment, 0, 0],
@@ -189,7 +189,7 @@ function generateDShape() {
 }
 
 function generateEShape() {
-    const segment = getRandomSegment();
+    const segment = E_SHAPE_COLOR_INDEX;
     return [
         [segment, 0, 0, 0, 0],
         [segment, 0, 0, 0, 0],
@@ -200,7 +200,7 @@ function generateEShape() {
 }
 
 function generateFShape() {
-    const segment = getRandomSegment();
+    const segment = F_SHAPE_COLOR_INDEX;
     return [
         [0, 0, segment, 0, 0],
         [0, 0, segment, 0, 0],
@@ -211,7 +211,7 @@ function generateFShape() {
 }
 
 function generateGShape() {
-    const segment = getRandomSegment();
+    const segment = G_SHAPE_COLOR_INDEX;
     return [
         [segment, segment, 0, 0, 0],
         [segment, 0, 0, 0, 0],
@@ -223,7 +223,7 @@ function generateGShape() {
 
 
 function generateTShape() {
-    const segment = getRandomSegment();
+    const segment = T_SHAPE_COLOR_INDEX;
     return [
         [0, segment, 0, 0, 0],
         [segment, segment, segment, 0, 0],
@@ -234,7 +234,7 @@ function generateTShape() {
 }
 
 function generateZShape() {
-    const segment = getRandomSegment();
+    const segment = Z_SHAPE_COLOR_INDEX;
     return [
         [segment, segment, 0, 0, 0],
         [0, segment, 0, 0, 0],
@@ -246,7 +246,7 @@ function generateZShape() {
 
 
 function generateSShape() {
-    const segment = getRandomSegment();
+    const segment = S_SHAPE_COLOR_INDEX;
     return [
         [0, segment, segment, 0, 0],
         [segment, segment, 0, 0, 0],
@@ -257,7 +257,7 @@ function generateSShape() {
 }
 
 function generateUShape() {
-    const segment = getRandomSegment();
+    const segment = U_SHAPE_COLOR_INDEX;
     return [
         [segment, 0, segment, 0, 0],
         [segment, segment, segment, 0, 0],
