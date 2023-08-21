@@ -40,7 +40,7 @@ body {
 }
 
 #clear-line-message {
-  font-family: sans-serif; /* Sans-serif font */
+  font-family: 'Press Start 2P', cursive;
   text-align: center; /* Center the text */
   font-size: 18px; /* Set the font size */
   color: #333; /* Set the text color */
@@ -53,7 +53,8 @@ body {
   margin: 3px 0; /* Adjust margin as needed */
   text-align: center;
   font-size: 1.5rem;
-  font-family: sans-serif; /* Sans-serif font */
+  font-family: 'Press Start 2P', cursive;
+  margin-right: 20px; /* Wide space between the timer and the button */
 }
 
 .top-section {
@@ -82,7 +83,6 @@ body {
 
 #score, #level, .pause-button {
   margin: 3px 0; /* Reduce the space above and below */
- 
 }
 
 #board {
