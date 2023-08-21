@@ -402,7 +402,7 @@ canvas.focus(); // Ensure that the canvas is focused to receive key events
 // Initialize the game
 // init();
 
-pauseButton.addEventListener('click', togglePause); // Add event listener
+// pauseButton.addEventListener('click', togglePause); // Add event listener
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
 
