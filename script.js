@@ -7,7 +7,8 @@ const gameContainer = document.getElementById('game-container');
 const BLOCK_SIZE = gameContainer.offsetWidth / COLS;
 canvas.width = gameContainer.offsetWidth; // 95% of the screen width
 canvas.height = ROWS * BLOCK_SIZE; // Adjusted based on the number of rows
-
+const INITIAL_DROP_INTERVAL = 1000; // Example value for the drop interval
+const SEGMENT_SIZE = BLOCK_SIZE; // Example value for the segment size
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
