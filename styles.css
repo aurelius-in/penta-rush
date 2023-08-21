@@ -72,6 +72,10 @@ body {
 #score, #level {
   margin: 8px; /* Adjust margin as needed */
   text-align: center;
+  font-family: 'Press Start 2P', cursive; /* Same font as the title */
+  font-size: 1.5rem; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
+  text-transform: uppercase; /* Convert text to all-caps */
 }
 
 #score, #level, .pause-button {
