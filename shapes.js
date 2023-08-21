@@ -173,22 +173,25 @@ function generateUShape() {
         [0, 0, 0, 0, 0]
     ];
 }
+
+const shapeGenerators = [
+    generateStraightShape,
+    generateSquareShape,
+    generateTShape,
+    generateZShape,
+    generateSShape,
+    generateAShape,
+    generateBShape,
+    generateCShape,
+    generateDShape,
+    generateEShape,
+    generateFShape,
+    generateGShape,
+    generateUShape
+];
+
 function generateRandomShape() {
-    const shapeGenerators = [
-        generateStraightShape, 
-        generateSquareShape, 
-        generateTShape, 
-        generateZShape, 
-        generateSShape,
-generateAShape, 
-generateBShape, 
-generateCShape, 
-generateDShape, 
-generateEShape, 
-generateFShape, 
-generateGShape, 
-        generateUShape
-    ];
     const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
     return shapeGenerators[randomIndex]();
 }
+
