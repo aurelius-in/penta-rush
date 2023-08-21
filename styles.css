@@ -16,7 +16,7 @@
     padding-top: 6;
     padding-bottom: 6;
     display: inline-block;
-    margin-right: -0.2em; /* Adjust as needed to remove gaps */
+    margin-right: -0.15em; /* Adjust as needed to remove gaps */
 }
 
 #score {
