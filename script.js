@@ -1,8 +1,13 @@
 import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 
 const INITIAL_DROP_INTERVAL = 700; // Faster falling
-const COLS = 25;
-const ROWS = 30;
+const COLS = 30; // Increase the number of columns
+const ROWS = 35; // Increase the number of rows
+const canvas = document.getElementById('board');
+const BLOCK_SIZE = window.innerWidth / COLS; // Set the block size based on the window width
+canvas.width = window.innerWidth; // Set the canvas width to the window width
+canvas.height = ROWS * BLOCK_SIZE; // Set the canvas height based on the number of rows and block size
+
 const canvas = document.getElementById('board');
 const BLOCK_SIZE = canvas.width / COLS; // Moved up
 canvas.width = COLS * BLOCK_SIZE;
