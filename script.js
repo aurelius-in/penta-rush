@@ -1,6 +1,6 @@
 import { SHAPES, BLOCK_IMAGES } from './shapes.js';
 
-const INITIAL_DROP_INTERVAL = 999;
+const INITIAL_DROP_INTERVAL = 899;
 const COLS = 20;
 const ROWS = 30;
 const canvas = document.getElementById('board');
@@ -435,7 +435,7 @@ function drawSegment(x, y, color) {
 
     // Add a thin grey outline
     ctx.strokeStyle = "#808080"; // Grey color
-    ctx.lineWidth = 1; // Thin line width
+    ctx.lineWidth = 3; // Thin line width
     ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 }
 
