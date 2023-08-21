@@ -9,9 +9,9 @@
 
 /* Resetting default margin and padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -24,35 +24,33 @@ body {
   overflow: hidden;
   background-color: #282c34;
   color: #ffffff;
-  font-family: sans-serif; /* Sans-serif font */
+  font-family: sans-serif;
 }
 
 #game-container {
   width: 95%;
-  height: 95vh; /* Fill 95% of the viewport height */
+  height: 95vh;
   max-width: 95%;
   margin: 0 auto;
 }
 
 #board {
-  width: 100%; /* Fill the entire container */
+  width: 100%;
   border: 3px solid #ffffff;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #clear-line-message {
   font-family: 'Press Start 2P', cursive;
-  text-align: center; /* Center the text */
-  font-size: 18px; /* Set the font size */
-  color: #333; /* Set the text color */
-  margin: 3px 0; /* Reduce the space above and below */
- 
-
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin: 3px 0;
 }
 
 .top-section {
   display: flex;
-  flex-direction: column; /* Stack the rows vertically */
+  flex-direction: column;
   align-items: center;
   margin: 3px 0;
 }
@@ -60,73 +58,21 @@ body {
 .score-level,
 .timer-button {
   display: flex;
-  justify-content: space-between; /* Create a wide gap between elements */
-  width: 100%; /* Fill the entire width */
+  justify-content: space-between;
+  width: 100%;
 }
 
 #score, #level, #timer {
-  font-family: 'Press Start 2P', cursive; /* Same font as the title */
+  font-family: 'Press Start 2P', cursive;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-
 #timer {
-  margin: 3px 0; /* Adjust margin as needed */
+  margin: 3px 0;
   text-align: center;
-  font-size: 1.5rem;
-  font-family: 'Press Start 2P', cursive;
-  margin-right: 20px; /* Wide space between the timer and the button */
-}
-
-.top-section {
-  padding: 2px; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3px 0; /* Adjust margin as needed */
-}
-
-
-#game-canvas {
-  width: 100%;
-  height: auto;
-  border: 1px solid #000;
-}
-
-#score, #level {
-  margin: 6px; /* Adjust margin as needed */
-  text-align: center;
-  font-family: 'Press Start 2P', cursive; /* Same font as the title */
-  font-size: 1.5rem; /* Increase the font size */
-  font-weight: bold; /* Make the text bold */
-  text-transform: uppercase; /* Convert text to all-caps */
-}
-
-#score, #level, .pause-button {
-  margin: 3px 0; /* Reduce the space above and below */
-}
-
-#board {
-    margin-top: 20px;
-    border: 3px solid #ffffff;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-}
-
-.control-button {
-    padding: 0; /* Remove padding */
-    background-color: #add8e6; /* Light blue color */
-    color: #000000; /* Black text color */
-    border: none;
-    font-size: 2rem; /* Increase font size */
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 0 5px; /* Add margin to the left and right of the buttons */
-}
-
-.control-button:hover {
-    background-color: #90cfe0; /* Darker shade of blue on hover */
+  margin-right: 20px;
 }
 
 #playPause {
@@ -136,7 +82,7 @@ body {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background-color: #4caf50; /* Green color */
+  background-color: #4caf50;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -145,12 +91,20 @@ body {
 }
 
 #level {
-  margin-left: 20px; /* Space to the left of the level */
+  margin-left: 20px;
 }
 
+.control-button {
+  padding: 0;
+  background-color: #add8e6;
+  color: #000000;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 5px;
+}
 
-#score, #level {
-    text-align: center;
-    margin-top: 4px;
-    font-family: sans-serif; /* Sans-serif font */
+.control-button:hover {
+  background-color: #90cfe0;
 }
