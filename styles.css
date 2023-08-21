@@ -13,7 +13,8 @@
 
 #game-title span {
     margin: 0;
-    padding: 2;
+    padding-top: 6;
+    padding-bottom: 6;
     display: inline-block;
     margin-right: -0.2em; /* Adjust as needed to remove gaps */
 }
@@ -31,7 +32,7 @@
 }
 
 #game-title {
-    padding-top: 3px;
+    padding-top: 5px;
   font-family: 'Press Start 2P', cursive;
   font-size: 2rem;
   letter-spacing: 0;
@@ -106,6 +107,7 @@ body {
 
 #timer {
   padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
   margin: 3px 0;
   font-size: 1.5rem;
