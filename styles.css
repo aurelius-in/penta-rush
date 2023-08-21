@@ -1,33 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.color1 { color: #E63946; } /* Bright Red */
-.color2 { color: #F1FAEE; } /* Soft Green */
-.color3 { color: #A8DADC; } /* Light Blue */
-.color4 { color: #457B9D; } /* Medium Blue */
-.color5 { color: #1D3557; } /* Dark Blue */
-.color6 { color: transparent; } /* Space character */
-.color7 { color: #F4A261; } /* Sandy Brown */
-.color8 { color: #2A9D8F; } /* Teal Green */
-.color9 { color: #E76F51; } /* Burnt Sienna */
-.color10 { color: #264653; } /* Charcoal */
+.color1 { color: #FF5733; }
+.color2 { color: #33FF57; }
+.color3 { color: #33A1FF; }
+.color4 { color: #FF33A1; }
+.color5 { color: #A133FF; }
+.color6 { color: transparent; }
+.color7 { color: #FFC300; }
+.color8 { color: #FF5733; }
+.color9 { color: #33FF57; }
+.color10 { color: #33A1FF; }
 
 #game-title {
   font-family: 'Press Start 2P', cursive;
-  text-align: center;
-  margin: 8px 0;
-  font-size: 2rem; /* Reduced font size */
-  letter-spacing: 0; /* Removed spaces between letters */
+  font-size: 2rem;
+  letter-spacing: 0;
 }
 
-.color1, .color2, .color3, .color4, .color5,
-.color7, .color8, .color9, .color10 {
-  margin: 0; /* Removed margin between letters */
-
-/* Resetting default margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#clear-line-message {
+  font-size: 11px;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color: green; /* Green color for the message */
+  margin: 4px 0;
 }
 
 body {
@@ -44,7 +39,7 @@ body {
 }
 
 #game-container {
-  position: relative; 
+  position: relative;
   width: 95%;
   height: 95vh;
   max-width: 95%;
@@ -55,14 +50,6 @@ body {
   width: 100%;
   border: 3px solid #ffffff;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-#clear-line-message {
-  font-size: 11px;
-  font-family: 'Press Start 2P', cursive;
-  text-align: center;
-  color: #333;
-  margin: 4px 0;
 }
 
 .top-section {
@@ -81,24 +68,23 @@ body {
 
 #score, #level {
   font-size: 1rem;
-}
-#score, #level, #timer {
   font-family: 'Press Start 2P', cursive;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 #timer {
-  padding-top: 5px; /* Added padding */
-  text-align: center; 
+  padding-top: 5px;
+  text-align: center;
   margin: 3px 0;
   font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive; /* Same font as title */
 }
 
 #playPause {
-  position: absolute; /* Absolute positioning for the button */
-  top: 0; /* Align to the top of the container */
-  right: 0; 
+  position: absolute;
+  top: 0;
+  right: 0;
   margin: 0;
   font-size: 40px;
   padding: 0;
