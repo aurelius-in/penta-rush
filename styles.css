@@ -95,14 +95,6 @@ body {
   transition: background-color 0.3s;
 }
 
-.start-button:hover {
-    background-color: #388e3c; /* Darker green on hover */
-}
-
-#start {
-  margin-right: 20px; /* Space to the right of the play button */
-}
-
 #level {
   margin-left: 20px; /* Space to the left of the level */
 }
