@@ -52,6 +52,22 @@ const SHAPES_COLORS = [
 
 const playPauseButton = document.getElementById('playPause');
 
+let timer = 120; // 2 minutes
+
+playPauseButton.addEventListener('click', () => {
+  if (isPaused) {
+    // Resume the game
+    gameLoop();
+    playPauseButton.textContent = '⏸️';
+    timerInterval = setInterval(decrementTimer, 1000); // Resume the timer
+  } else {
+    // Pause the game
+    cancelAnimationFrame(requestId);
+    playPauseButton.textContent = '▶️';
+    clearInterval(timerInterval); // Pause the timer
+  }
+  isPaused = !isPause
+
 playPauseButton.addEventListener('click', () => {
   if (isPaused) {
     // Resume the game
@@ -68,18 +84,16 @@ playPauseButton.addEventListener('click', () => {
 });
 
 
-
-function startTimer(duration) {
-  var timer = duration, minutes, seconds;
+  function startTimer() {
   timerInterval = setInterval(decrementTimer, 1000); // Assign the interval to the variable
+}
 
-  function decrementTimer() {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    document.getElementById('timer').textContent = minutes + ':' + seconds;
-    if (timer >= 0) timer--;
-  }
+function decrementTimer() {
+  let minutes = parseInt(timer / 60, 10);
+  let seconds = parseInt(timer % 60, 10);
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  document.getElementById('timer').textContent = minutes + ':' + seconds;
+  if (timer >= 0) timer--;
 }
 
 
@@ -427,7 +441,7 @@ function gameLoop(timestamp) {
 function startGame() {
   init();
   gameLoop();
-  startTimer(120); // Start the timer with a duration of 2 minutes
+  startTimer(); // Start the timer with a duration of 2 minutes
   playPauseButton.textContent = '⏸️';
 }
 
