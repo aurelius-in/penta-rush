@@ -1,4 +1,19 @@
 import { SHAPES_COLORS, generateStraightShape, generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape } from './shapes.js';
+import {
+  SQUARE_COLOR_INDEX,
+  T_SHAPE_COLOR_INDEX,
+  A_SHAPE_COLOR_INDEX,
+  B_SHAPE_COLOR_INDEX,
+  C_SHAPE_COLOR_INDEX,
+  D_SHAPE_COLOR_INDEX,
+  E_SHAPE_COLOR_INDEX,
+  F_SHAPE_COLOR_INDEX,
+  G_SHAPE_COLOR_INDEX,
+  Z_SHAPE_COLOR_INDEX,
+  S_SHAPE_COLOR_INDEX,
+  U_SHAPE_COLOR_INDEX
+} from './shapes.js';
+
 const COLS = 30;
 const ROWS = 40;
 const canvas = document.getElementById('board');
