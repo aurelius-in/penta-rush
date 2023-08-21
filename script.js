@@ -49,9 +49,6 @@ function startTimer(duration) {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds; // Add leading zero if needed
         document.getElementById('timer').textContent = minutes + ':' + seconds;
-        if (--timer < 0) {
-            timer = duration;
-        }
     }, 1000);
 }
 
