@@ -278,8 +278,6 @@ function startGame() {
   playPauseButton.textContent = '⏸️';
 }
 
-const pauseButton = document.getElementById("pause"); // Get the pause button
-
 function togglePause() {
     isPaused = !isPaused;
     if (!isPaused) {
