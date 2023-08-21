@@ -48,6 +48,7 @@ body {
 }
 
 #game-container {
+  position: relative; 
   width: 95%;
   height: 95vh;
   max-width: 95%;
@@ -99,6 +100,9 @@ body {
 }
 
 #playPause {
+  position: absolute; /* Absolute positioning for the button */
+  top: 0; /* Align to the top of the container */
+  right: 0; 
   margin: 0;
   font-size: 40px;
   padding: 0;
