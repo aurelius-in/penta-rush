@@ -74,6 +74,21 @@ function decrementTimer() {
   if (timer > 0) timer--; // Decrement only if timer is greater than zero
 }
 
+function drawBoard() {
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      if (board[y][x]) {
+        drawSegment(x, y, board[y][x]); // Pass the color index
+      } else {
+        // Draw the grid lines
+        ctx.strokeStyle = "#B0C4DE"; // Blue-grey color
+        ctx.lineWidth = 1; // Thin line width
+        ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
+      }
+    }
+  }
+}
+
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
     touchStartY = event.touches[0].clientY;
