@@ -63,23 +63,8 @@ playPauseButton.addEventListener('click', () => {
     playPauseButton.textContent = '▶️';
     clearInterval(timerInterval); // Pause the timer
   }
-  isPaused = !isPause
-
-playPauseButton.addEventListener('click', () => {
-  if (isPaused) {
-    // Resume the game
-    gameLoop();
-    playPauseButton.textContent = '⏸️';
-    timerInterval = setInterval(decrementTimer, 1000); // Resume the timer
-  } else {
-    // Pause the game
-    cancelAnimationFrame(requestId);
-    playPauseButton.textContent = '▶️';
-    clearInterval(timerInterval); // Pause the timer
-  }
-  isPaused = !isPaused;
+  isPaused = !isPaused; // Corrected line
 });
-
 
   function startTimer() {
   timerInterval = setInterval(decrementTimer, 1000); // Assign the interval to the variable
