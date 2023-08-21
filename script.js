@@ -46,6 +46,24 @@ let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
 
+const playPauseButton = document.getElementById('playPause');
+
+let isPaused = false;
+
+playPauseButton.addEventListener('click', () => {
+  if (isPaused) {
+    // Resume the game
+    gameLoop();
+    playPauseButton.textContent = '⏯'; // Update the symbol to pause-play
+  } else {
+    // Pause the game
+    cancelAnimationFrame(requestId); // Assuming requestId is the ID returned by requestAnimationFrame
+    playPauseButton.textContent = '▶️'; // Update the symbol to play
+  }
+  isPaused = !isPaused; // Toggle the pause state
+});
+
+
 // Modify startTimer function to handle countdown
 function startTimer(duration) {
     var timer = duration, minutes, seconds;
