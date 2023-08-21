@@ -24,6 +24,7 @@ body {
   overflow: hidden;
   background-color: #282c34;
   color: #ffffff;
+  font-family: sans-serif; /* Sans-serif font */
 }
 
     #game-container {
@@ -50,6 +51,7 @@ body {
   margin: 5px 0; /* Adjust margin as needed */
   text-align: center;
   font-size: 1.5rem;
+  font-family: sans-serif; /* Sans-serif font */
 }
 
 .top-section {
@@ -57,7 +59,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 10px 0; /* Adjust margin as needed */
-    padding: 0 5px; /* Add padding to the left and right if needed */
+  padding: 0 5px; /* Add padding to the left and right if needed */
 }
 
 
@@ -120,4 +122,5 @@ body {
 #score, #level {
     text-align: center;
     margin-top: 15px;
+    font-family: sans-serif; /* Sans-serif font */
 }
