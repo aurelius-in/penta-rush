@@ -224,6 +224,8 @@ function mergeShape() {
         }
     }
     clearLines(); // Add this line to clear full lines
+    score += 1; // Increment the score by 1 for each dropped shape
+    document.getElementById('score').innerText = `Score: ${score}`; // Update the score display
 }
 
 function init() {
