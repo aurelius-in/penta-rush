@@ -27,10 +27,11 @@ body {
   font-family: sans-serif; /* Sans-serif font */
 }
 
-    #game-container {
-  width: 95%; /* Fill 95% of the screen width */
+#game-container {
+  width: 95%;
+  height: 95vh; /* Fill 95% of the viewport height */
   max-width: 95%;
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto;
 }
 
 #board {
