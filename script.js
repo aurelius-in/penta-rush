@@ -181,18 +181,6 @@ function moveShapeDown() {
     }
 }
 
-// Add missing generateStraightShape function
-function generateStraightShape() {
-    const segment = getRandomSegment();
-    return [
-        [segment, segment, segment, segment, segment],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
-    ];
-}
-
 function moveShapeLeft() {
     if (!checkCollision(currentShape, currentPos.x - 1, currentPos.y)) {
         currentPos.x -= 1;
