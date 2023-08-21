@@ -38,6 +38,12 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+#clear-line-message {
+  font-family: sans-serif; /* Sans-serif font */
+  text-align: center; /* Center the text */
+  margin: 10px 0; /* Add some margin above and below the message */
+  font-size: 18px; /* Set the font size */
+  color: #333; /* Set the text color */
 }
 
 #timer {
