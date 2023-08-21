@@ -10,7 +10,7 @@ canvas.height = ROWS * BLOCK_SIZE;
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
-const startButton = document.getElementById("start");
+// const startButton = document.getElementById("start");
 // startButton.disabled = true; // Disable the start button initially
 
 
@@ -45,10 +45,9 @@ let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
+let isPaused = false;
 
 const playPauseButton = document.getElementById('playPause');
-
-let isPaused = false;
 
 playPauseButton.addEventListener('click', () => {
   if (isPaused) {
@@ -62,7 +61,6 @@ playPauseButton.addEventListener('click', () => {
   }
   isPaused = !isPaused; // Toggle the pause state
 });
-
 
 // Modify startTimer function to handle countdown
 function startTimer(duration) {
