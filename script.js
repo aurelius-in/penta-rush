@@ -55,14 +55,17 @@ playPauseButton.addEventListener('click', () => {
   if (isPaused) {
     // Resume the game
     gameLoop();
-    playPauseButton.textContent = '⏸️'; // Update the symbol to pause
+    playPauseButton.textContent = '⏸️';
+    timerInterval = setInterval(decrementTimer, 1000); // Resume the timer
   } else {
     // Pause the game
     cancelAnimationFrame(requestId);
-    playPauseButton.textContent = '▶️'; // Update the symbol to play
+    playPauseButton.textContent = '▶️';
+    clearInterval(timerInterval); // Pause the timer
   }
-  isPaused = !isPaused; // Toggle the pause state
+  isPaused = !isPaused;
 });
+
 
 
 function startTimer(duration) {
