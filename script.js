@@ -1,5 +1,4 @@
-import { generateStraightShape, generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape } from './shapes.js';
-
+import { SHAPES_COLORS, generateStraightShape, generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape } from './shapes.js';
 const COLS = 30;
 const ROWS = 40;
 const canvas = document.getElementById('board');
@@ -27,30 +26,6 @@ let touchStartY = 0;
 let touchStartTime = 0;
 let timerInterval; // Declare a variable to hold the timer interval
 let currentShapeIndex = 0; // Add this line to keep track of the current shape index
-const SQUARE_COLOR_INDEX = 1;
-const T_SHAPE_COLOR_INDEX = 2;
-const Z_SHAPE_COLOR_INDEX = 3;
-const A_SHAPE_COLOR_INDEX = 4;
-const B_SHAPE_COLOR_INDEX = 5;
-const C_SHAPE_COLOR_INDEX = 6;
-const D_SHAPE_COLOR_INDEX = 7;
-const E_SHAPE_COLOR_INDEX = 8;
-const F_SHAPE_COLOR_INDEX = 9;
-const G_SHAPE_COLOR_INDEX = 10;
-const U_SHAPE_COLOR_INDEX = 11;
-const SHAPES_COLORS = [
-  null, // No color for index 0
-  "#f00", // Color for shape 1
-  "#0f0", // Color for shape 2
-  "#00f", // Color for shape 3
-  "#ff0", // Color for shape 4
-  "#0ff", // Color for shape 5
-  "#f0f", // Color for shape 6
-  "#f90", // Color for shape 7
-  "#90f", // Color for shape 8
-  "#09f", // Color for shape 9
-  "#f09"  // Color for shape 10
-];
 
 const playPauseButton = document.getElementById('playPause');
 
