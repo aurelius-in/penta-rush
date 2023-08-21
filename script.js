@@ -1,6 +1,7 @@
 import { SHAPES_COLORS, generateStraightShape, generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape } from './shapes.js';
 import {
   SQUARE_COLOR_INDEX,
+STRAIGHT_COLOR_INDEX,
   T_SHAPE_COLOR_INDEX,
   A_SHAPE_COLOR_INDEX,
   B_SHAPE_COLOR_INDEX,
@@ -14,8 +15,8 @@ import {
   U_SHAPE_COLOR_INDEX
 } from './shapes.js';
 
-const COLS = 30;
-const ROWS = 40;
+const COLS = 25;
+const ROWS = 45;
 const canvas = document.getElementById('board');
 const gameContainer = document.getElementById('game-container');
 const BLOCK_SIZE = gameContainer.offsetWidth / COLS;
@@ -269,7 +270,7 @@ function drawSegment(x, y, colorIndex) {
 
   // Add a thicker grey outline
   ctx.strokeStyle = "#808080";
-  ctx.lineWidth = 4; // Thicker line width
+  ctx.lineWidth = 3; // Thicker line width
   ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 }
 // Draw Board Function
@@ -302,13 +303,8 @@ function handleKeyDown(event) {
 }
 
 document.addEventListener('keydown', handleKeyDown);
-
 canvas.focus(); // Ensure that the canvas is focused to receive key events
-
-// Initialize the game
-// init();
 
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
-
 window.onload = startGame;
