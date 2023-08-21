@@ -42,9 +42,11 @@ body {
 #clear-line-message {
   font-family: sans-serif; /* Sans-serif font */
   text-align: center; /* Center the text */
-  margin: 10px 0; /* Add some margin above and below the message */
   font-size: 18px; /* Set the font size */
   color: #333; /* Set the text color */
+  margin: 5px 0; /* Reduce the space above and below */
+ 
+
 }
 
 #timer {
@@ -55,11 +57,11 @@ body {
 }
 
 .top-section {
+  padding: 3px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 0; /* Adjust margin as needed */
-  padding: 0 5px; /* Add padding to the left and right if needed */
 }
 
 
@@ -79,7 +81,8 @@ body {
 }
 
 #score, #level, .pause-button {
-    margin-top: 15px;
+  margin: 5px 0; /* Reduce the space above and below */
+ 
 }
 
 #board {
