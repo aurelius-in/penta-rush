@@ -155,26 +155,6 @@ function getRandomSegment() {
     return Math.floor(Math.random() * SHAPES_COLORS.length);
 }
 
-function generateRandomShape() {
-    const shapeGenerators = [
-        generateStraightShape, 
-        generateSquareShape, 
-        generateTShape, 
-        generateZShape, 
-        generateSShape,
-generateAShape, 
-generateBShape, 
-generateCShape, 
-generateDShape, 
-generateEShape, 
-generateFShape, 
-generateGShape, 
-        generateUShape
-    ];
-    const randomIndex = Math.floor(Math.random() * shapeGenerators.length);
-    return shapeGenerators[randomIndex]();
-}
-
 function drawShape(shape, x, y) {
     for (let i = 0; i < shape.length; i++) {
         for (let j = 0; j < shape[i].length; j++) {
