@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-#title {
+#game-title {
   font-family: 'Press Start 2P', cursive;
-  margin: 10px 0; /* Adjust margin as needed */
+  margin: 10px 0;
   text-align: center;
   font-size: 2rem;
 }
