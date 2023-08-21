@@ -17,6 +17,18 @@
     display: inline-block;
 }
 
+#score {
+  color: #3498db; /* Vibrant blue for Score */
+}
+
+#level {
+  color: #2ecc71; /* Bold green for Level */
+}
+
+#timer {
+  color: #e74c3c; /* Striking red for Timer */
+}
+
 #game-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 2rem;
