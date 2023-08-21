@@ -59,10 +59,15 @@ body {
   margin: 4px 0;
 }
 
-.score-level,
-.timer-button {
+.score-level {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+
+.timer-button {
+  display: flex;
+  justify-content: center; /* Center the timer */
   width: 100%;
 }
 
