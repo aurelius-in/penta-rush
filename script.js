@@ -45,7 +45,7 @@ let currentShapeIndex = 0; // Add this line to keep track of the current shape i
 
 const playPauseButton = document.getElementById('playPause');
 
-let timer = 120; // 2 minutes
+let timer = 180; // 3 minutes
 
 playPauseButton.addEventListener('click', () => {
   if (isPaused) {
@@ -253,7 +253,7 @@ function gameLoop(timestamp) {
 function startGame() {
   init();
   gameLoop();
-  startTimer(); // Start the timer with a duration of 2 minutes
+  startTimer(); // Start the timer with a duration of 3 minutes
   playPauseButton.textContent = '⏸️';
 }
 
