@@ -12,6 +12,9 @@
 .color10 { color: #264653; } /* Charcoal */
 
 #game-title {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  margin: 8px 0;
   font-size: 2rem; /* Reduced font size */
   letter-spacing: 0; /* Removed spaces between letters */
 }
@@ -19,13 +22,6 @@
 .color1, .color2, .color3, .color4, .color5,
 .color7, .color8, .color9, .color10 {
   margin: 0; /* Removed margin between letters */
-}
-
-  font-family: 'Press Start 2P', cursive;
-  margin: 8px 0;
-  text-align: center;
-  font-size: 2rem;
-}
 
 /* Resetting default margin and padding */
 * {
