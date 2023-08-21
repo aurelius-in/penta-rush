@@ -71,7 +71,7 @@ function decrementTimer() {
   let seconds = parseInt(timer % 60, 10);
   seconds = seconds < 10 ? "0" + seconds : seconds;
   document.getElementById('timer').textContent = minutes + ':' + seconds;
-  if (timer >= 0) timer--;
+  if (timer > 0) timer--; // Decrement only if timer is greater than zero
 }
 
 function handleTouchStart(event) {
@@ -180,7 +180,6 @@ function moveShapeDown() {
   }
 }
 
-
 function moveShapeLeft() {
     if (!checkCollision(currentShape, currentPos.x - 1, currentPos.y)) {
         currentPos.x -= 1;
@@ -240,9 +239,7 @@ function init() {
     drawBoard();
     drawShape(currentShape, currentPos.x, currentPos.y);
     currentPos = { x: Math.floor(COLS / 2) - 2, y: 3 }; // Start 3 blocks from the top
-   
 }
-
 
 function gameLoop(timestamp) {
     lastTime = lastTime || timestamp;
