@@ -366,4 +366,4 @@ canvas.focus(); // Ensure that the canvas is focused to receive key events
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
 
-startGame();
+window.onload = startGame;
