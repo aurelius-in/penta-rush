@@ -79,7 +79,16 @@ body {
 .control-button:hover {
     background-color: #90cfe0; /* Darker shade of blue on hover */
 }
-    
+
+#playPause {
+  font-size: 40px; /* Increase the font size */
+  padding: 0; /* Remove padding */
+  width: 40px; /* Set the width */
+  height: 40px; /* Set the height */
+  line-height: 40px; /* Center the symbol vertically */
+  text-align: center; /* Center the symbol horizontally */
+}
+
 .start-button {
     padding: 10px 20px;
     background-color: #4caf50; /* Green color */
