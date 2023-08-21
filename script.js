@@ -35,6 +35,7 @@ const D_SHAPE_COLOR_INDEX = 7;
 const E_SHAPE_COLOR_INDEX = 8;
 const F_SHAPE_COLOR_INDEX = 9;
 const G_SHAPE_COLOR_INDEX = 10;
+const U_SHAPE_COLOR_INDEX = 11;
 const SHAPES_COLORS = [
   null, // No color for index 0
   "#f00", // Color for shape 1
