@@ -123,8 +123,9 @@ function clearLines() {
 
   for (let row = 0; row < ROWS; row++) {
     if (board[row].every(segment => segment)) {
-      // Call the animation function for the cleared row
-      animateClearedLine(row);
+      // Remove the cleared line and add a new empty line at the top
+      board.splice(row, 1);
+      board.unshift(Array(COLS).fill(0));
 
       // Increment the number of lines cleared
       linesCleared++;
@@ -142,9 +143,11 @@ function clearLines() {
     document.getElementById('level').innerText = `Level: ${level}`;
     document.getElementById('score').innerText = `Score: ${score}`;
 
-    // TO DO: add logic to increase the game speed based on the new level
+    // Increase the game speed by 15% for the new level
+    dropInterval *= 0.85; // 85% of the current drop interval
   }
 }
+
 
 
 function handleTouchTap() {
