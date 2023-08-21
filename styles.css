@@ -17,10 +17,18 @@ body {
   color: #ffffff;
 }
 
-#game-container {
-  width: 100%;
-  max-width: calc(100% - 2 * BLOCK_SIZE); /* Adjust the width */
-  padding: 0 BLOCK_SIZE; /* One block-width padding on the left and right */
+    #game-container {
+  width: 95%; /* Fill 95% of the screen width */
+  max-width: 95%;
+  margin: 0 auto; /* Center the container */
+}
+
+#board {
+  width: 100%; /* Fill the entire container */
+  border: 3px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 }
 
 #game-title {
