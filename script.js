@@ -69,15 +69,18 @@ playPauseButton.addEventListener('click', () => {
 
 
 function startTimer(duration) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        document.getElementById('timer').textContent = minutes + ':' + seconds;
-        if (timer >= 0) timer--; // Decrement the timer value only if it's non-negative
-    }, 1000);
+  var timer = duration, minutes, seconds;
+  timerInterval = setInterval(decrementTimer, 1000); // Assign the interval to the variable
+
+  function decrementTimer() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    document.getElementById('timer').textContent = minutes + ':' + seconds;
+    if (timer >= 0) timer--;
+  }
 }
+
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
@@ -124,21 +127,23 @@ function handleTouchEnd(event) {
 }
 
 function clearLines() {
-    for (let y = 0; y < ROWS; y++) {
-        let isLineFull = true;
-        for (let x = 0; x < COLS; x++) {
-            if (board[y][x] === 0) {
-                isLineFull = false;
-                break;
-            }
-        }
-        if (isLineFull) {
-            // Remove the line and add a new empty line at the top
-            board.splice(y, 1);
-            board.unshift(Array(COLS).fill(0));
-            // Increment score or perform other actions as needed
-        }
+  for (let y = 0; y < ROWS; y++) {
+    let isLineFull = true;
+    for (let x = 0; x < COLS; x++) {
+      if (board[y][x] === 0) {
+        isLineFull = false;
+        break;
+      }
     }
+    if (isLineFull) {
+      // Remove the line and add a new empty line at the top
+      board.splice(y, 1);
+      board.unshift(Array(COLS).fill(0));
+      level++; // Increment the level
+      // Perform animation or other actions as needed
+      board = Array.from({ length: ROWS }, () => Array(COLS).fill(0)); // Clear the board
+    }
+  }
 }
 
 function handleTouchTap() {
