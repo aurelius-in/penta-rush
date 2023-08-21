@@ -45,7 +45,7 @@ function generateAShape() {
     return [
         [segment, segment, segment, segment, 0],
         [0, segment, 0, 0, 0],
-        [0, , 0, 0, 0],
+        [0, 0, 0, 0, 0], // Corrected line
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
     ];
