@@ -1,5 +1,15 @@
-export { generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape };
+export { generateStraightShape, generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape };
 
+function generateStraightShape() {
+    const segment = getRandomSegment();
+    return [
+        [segment, segment, segment, segment, segment],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
+}
 function generateAShape() {
     const segment = A_SHAPE_COLOR_INDEX;
     return [
