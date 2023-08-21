@@ -166,19 +166,20 @@ function drawShape(shape, x, y) {
 }
 
 function moveShapeDown() {
-    if (!checkCollision(currentShape, currentPos.x, currentPos.y + 1)) {
-        currentPos.y += 1;
-    } else {
-        mergeShape();
-        currentShape = generateRandomShape();
-        currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
-        if (checkCollision(currentShape, currentPos.x, currentPos.y)) {
-            // End of the game
-            alert("Game Over!");
-            init();
-        }
+  if (!checkCollision(currentShape, currentPos.x, currentPos.y + 1) && currentPos.y < ROWS - currentShape.length) {
+    currentPos.y += 1;
+  } else {
+    mergeShape();
+    currentShape = generateRandomShape();
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
+    if (checkCollision(currentShape, currentPos.x, currentPos.y)) {
+      // End of the game
+      alert("Game Over!");
+      init();
     }
+  }
 }
+
 
 function moveShapeLeft() {
     if (!checkCollision(currentShape, currentPos.x - 1, currentPos.y)) {
