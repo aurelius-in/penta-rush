@@ -119,9 +119,9 @@ function handleTouchEnd(event) {
 }
 
 function clearLines() {
-  let linesCleared = 0; // Keep track of the number of lines cleared
+  let linesCleared = 0;
 
-  for (let row = 0; row < BOARD_HEIGHT; row++) {
+  for (let row = 0; row < ROWS; row++) {
     if (board[row].every(segment => segment)) {
       // Call the animation function for the cleared row
       animateClearedLine(row);
@@ -142,7 +142,7 @@ function clearLines() {
     document.getElementById('level').innerText = `Level: ${level}`;
     document.getElementById('score').innerText = `Score: ${score}`;
 
-    // Optionally, you can add logic to increase the game speed or difficulty based on the new level
+    // TO DO: add logic to increase the game speed based on the new level
   }
 }
 
