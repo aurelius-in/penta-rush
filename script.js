@@ -10,7 +10,7 @@ canvas.height = ROWS * BLOCK_SIZE;
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
-const startButton = document.getElementById("start");
+// const startButton = document.getElementById("start");
 // startButton.disabled = true; // Disable the start button initially
 
 
@@ -351,7 +351,7 @@ function startGame() {
     startTimer(60); // Start the timer with a duration of 60 seconds
 }
 
-const pauseButton = document.getElementById("pause"); // Get the pause button
+// const pauseButton = document.getElementById("pause"); // Get the pause button
 
 function togglePause() {
     isPaused = !isPaused;
