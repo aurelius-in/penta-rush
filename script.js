@@ -10,7 +10,7 @@ canvas.height = ROWS * BLOCK_SIZE;
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
-
+let requestId;
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
 let level = 1;
@@ -48,10 +48,12 @@ function startTimer(duration) {
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
-        seconds = seconds < 10 ? "0" + seconds : seconds; // Add leading zero if needed
+        seconds = seconds < 10 ? "0" + seconds : seconds;
         document.getElementById('timer').textContent = minutes + ':' + seconds;
+        timer--; // Decrement the timer value
     }, 1000);
 }
+
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
@@ -303,7 +305,7 @@ function gameLoop(timestamp) {
         drawBoard();
         drawShape(currentShape, currentPos.x, currentPos.y); // Add arguments
     }
-    requestAnimationFrame(gameLoop);
+    requestId = requestAnimationFrame(gameLoop); // Update requestId
 }
 
 function startGame() {
