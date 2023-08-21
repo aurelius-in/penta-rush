@@ -299,16 +299,6 @@ function drawSegment(x, y, colorIndex) {
   ctx.lineWidth = 3; // Thicker line width
   ctx.strokeRect(x * SEGMENT_SIZE, y * SEGMENT_SIZE, SEGMENT_SIZE, SEGMENT_SIZE);
 }
-// Draw Board Function
-function drawBoard() {
-  for (let y = 0; y < ROWS; y++) {
-    for (let x = 0; x < COLS; x++) {
-      if (board[y][x]) {
-        drawSegment(x, y, board[y][x]); // Pass the color index
-      }
-    }
-  }
-}
 
 // Handle Key Down Function
 function handleKeyDown(event) {
