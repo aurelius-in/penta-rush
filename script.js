@@ -1,11 +1,13 @@
 import { generateAShape, generateSquareShape, generateBShape, generateCShape, generateDShape, generateEShape, generateFShape, generateGShape, generateTShape, generateZShape, generateSShape, generateUShape, generateRandomShape } from './shapes.js';
 
-const COLS = 30; // Increase the number of columns
-const ROWS = 35; // Increase the number of rows
+const COLS = 30;
+const ROWS = 40;
 const canvas = document.getElementById('board');
-const BLOCK_SIZE = window.innerWidth / COLS; // Set the block size based on the window width
-canvas.width = COLS * BLOCK_SIZE;
-canvas.height = ROWS * BLOCK_SIZE;
+const gameContainer = document.getElementById('game-container');
+const BLOCK_SIZE = gameContainer.offsetWidth / COLS;
+canvas.width = gameContainer.offsetWidth; // 95% of the screen width
+canvas.height = ROWS * BLOCK_SIZE; // Adjusted based on the number of rows
+
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
