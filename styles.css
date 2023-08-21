@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+.color1 { color: #E63946; } /* Bright Red */
+.color2 { color: #F1FAEE; } /* Soft Green */
+.color3 { color: #A8DADC; } /* Light Blue */
+.color4 { color: #457B9D; } /* Medium Blue */
+.color5 { color: #1D3557; } /* Dark Blue */
+.color6 { color: transparent; } /* Space character */
+.color7 { color: #F4A261; } /* Sandy Brown */
+.color8 { color: #2A9D8F; } /* Teal Green */
+.color9 { color: #E76F51; } /* Burnt Sienna */
+.color10 { color: #264653; } /* Charcoal */
+
 #game-title {
   font-family: 'Press Start 2P', cursive;
   margin: 8px 0;
@@ -41,9 +52,9 @@ body {
 }
 
 #clear-line-message {
+  font-size: 13px;
   font-family: 'Press Start 2P', cursive;
   text-align: center;
-  font-size: 18px;
   color: #333;
   margin: 3px 0;
 }
@@ -62,20 +73,24 @@ body {
   width: 100%;
 }
 
+#score, #level {
+  font-size: 1rem;
+}
 #score, #level, #timer {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 #timer {
+  padding-top: 5px; /* Added padding */
+  text-align: center; 
   margin: 3px 0;
-  text-align: center;
-  margin-right: 20px;
+  font-size: 1.5rem;
 }
 
 #playPause {
+  margin: 0;
   font-size: 40px;
   padding: 0;
   width: 40px;
