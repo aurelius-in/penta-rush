@@ -89,8 +89,7 @@ function handleTouchEnd(event) {
     }
     mergeShape();
     currentShape = generateRandomShape();
-    currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 };
-}
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 0 }; 
             } else {
             // Swipe up
             currentShape = generateRandomShape(); // Change to the next shape
