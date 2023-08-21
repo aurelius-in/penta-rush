@@ -2,7 +2,7 @@
 
 #game-title {
   font-family: 'Press Start 2P', cursive;
-  margin: 10px 0;
+  margin: 8px 0;
   text-align: center;
   font-size: 2rem;
 }
@@ -44,24 +44,24 @@ body {
   text-align: center; /* Center the text */
   font-size: 18px; /* Set the font size */
   color: #333; /* Set the text color */
-  margin: 5px 0; /* Reduce the space above and below */
+  margin: 3px 0; /* Reduce the space above and below */
  
 
 }
 
 #timer {
-  margin: 5px 0; /* Adjust margin as needed */
+  margin: 3px 0; /* Adjust margin as needed */
   text-align: center;
   font-size: 1.5rem;
   font-family: sans-serif; /* Sans-serif font */
 }
 
 .top-section {
-  padding: 3px; 
+  padding: 2px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0; /* Adjust margin as needed */
+  margin: 3px 0; /* Adjust margin as needed */
 }
 
 
@@ -72,7 +72,7 @@ body {
 }
 
 #score, #level {
-  margin: 8px; /* Adjust margin as needed */
+  margin: 6px; /* Adjust margin as needed */
   text-align: center;
   font-family: 'Press Start 2P', cursive; /* Same font as the title */
   font-size: 1.5rem; /* Increase the font size */
@@ -81,12 +81,12 @@ body {
 }
 
 #score, #level, .pause-button {
-  margin: 5px 0; /* Reduce the space above and below */
+  margin: 3px 0; /* Reduce the space above and below */
  
 }
 
 #board {
-    margin-top: 30px;
+    margin-top: 20px;
     border: 3px solid #ffffff;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
 }
@@ -128,6 +128,6 @@ body {
 
 #score, #level {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 4px;
     font-family: sans-serif; /* Sans-serif font */
 }
