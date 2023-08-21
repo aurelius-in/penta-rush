@@ -32,14 +32,15 @@ playPauseButton.addEventListener('click', () => {
   if (isPaused) {
     // Resume the game
     gameLoop();
-    playPauseButton.textContent = '⏯'; // Update the symbol to pause-play
+    playPauseButton.textContent = '▶️'; // Update the symbol to play
   } else {
     // Pause the game
     cancelAnimationFrame(requestId); // Assuming requestId is the ID returned by requestAnimationFrame
-    playPauseButton.textContent = '▶️'; // Update the symbol to play
+    playPauseButton.textContent = '⏸️'; // Update the symbol to pause
   }
   isPaused = !isPaused; // Toggle the pause state
 });
+
 
 // Modify startTimer function to handle countdown
 function startTimer(duration) {
@@ -306,9 +307,10 @@ function gameLoop(timestamp) {
 }
 
 function startGame() {
-    init();
-    gameLoop();
-    startTimer(60); // Start the timer with a duration of 60 seconds
+  init();
+  gameLoop();
+  startTimer(60); // Start the timer with a duration of 60 seconds
+  playPauseButton.textContent = '⏯️'; // Set the initial symbol to play-pause
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
