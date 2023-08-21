@@ -50,6 +50,28 @@ body {
 
 }
 
+.top-section {
+  display: flex;
+  flex-direction: column; /* Stack the rows vertically */
+  align-items: center;
+  margin: 3px 0;
+}
+
+.score-level,
+.timer-button {
+  display: flex;
+  justify-content: space-between; /* Create a wide gap between elements */
+  width: 100%; /* Fill the entire width */
+}
+
+#score, #level, #timer {
+  font-family: 'Press Start 2P', cursive; /* Same font as the title */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
 #timer {
   margin: 3px 0; /* Adjust margin as needed */
   text-align: center;
