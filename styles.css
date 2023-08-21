@@ -34,6 +34,8 @@
   font-family: 'Press Start 2P', cursive;
   font-size: 2rem;
   letter-spacing: 0;
+  margin: 0;
+  display: flex; /* Use flex to remove gaps between inline-block elements */
 }
 
 #clear-line-message {
