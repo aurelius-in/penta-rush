@@ -41,8 +41,6 @@ playPauseButton.addEventListener('click', () => {
   isPaused = !isPaused; // Toggle the pause state
 });
 
-
-// Modify startTimer function to handle countdown
 function startTimer(duration) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
@@ -50,10 +48,9 @@ function startTimer(duration) {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         document.getElementById('timer').textContent = minutes + ':' + seconds;
-        timer--; // Decrement the timer value
+        if (timer >= 0) timer--; // Decrement the timer value only if it's non-negative
     }, 1000);
 }
-
 
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
@@ -287,9 +284,10 @@ function init() {
     dropInterval = INITIAL_DROP_INTERVAL;
     isPaused = false;
     currentShape = generateRandomShape();
-    currentPos = { x: Math.floor(COLS / 2) - 2, y: 3 };
     drawBoard();
     drawShape(currentShape, currentPos.x, currentPos.y);
+    currentPos = { x: Math.floor(COLS / 2) - 2, y: 3 }; // Start 3 blocks from the top
+   
 }
 
 
@@ -312,7 +310,7 @@ function startGame() {
   init();
   gameLoop();
   startTimer(60); // Start the timer with a duration of 60 seconds
-  playPauseButton.textContent = '⏯️'; // Set the initial symbol to play-pause
+  playPauseButton.textContent = '⏸️'; // Set the initial symbol to pause since the game starts automatically
 }
 
 const pauseButton = document.getElementById("pause"); // Get the pause button
