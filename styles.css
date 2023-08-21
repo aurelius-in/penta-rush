@@ -87,9 +87,6 @@ body {
   height: 40px; /* Set the height */
   line-height: 40px; /* Center the symbol vertically */
   text-align: center; /* Center the symbol horizontally */
-}
-
-.start-button {
     padding: 10px 20px;
     background-color: #4caf50; /* Green color */
     color: #ffffff;
@@ -98,6 +95,12 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 40px; /* Increase the font size */
+  padding: 0; /* Remove padding */
+  width: 40px; /* Set the width */
+  height: 40px; /* Set the height */
+  line-height: 40px; /* Center the symbol vertically */
+  text-align: center; /* Center the symbol horizontally */
 }
 
 .start-button:hover {
@@ -110,15 +113,6 @@ body {
 
 #level {
   margin-left: 20px; /* Space to the left of the level */
-}
-
-#start, #pause {
-  font-size: 40px; /* Increase the font size */
-  padding: 0; /* Remove padding */
-  width: 40px; /* Set the width */
-  height: 40px; /* Set the height */
-  line-height: 40px; /* Center the symbol vertically */
-  text-align: center; /* Center the symbol horizontally */
 }
 
 
