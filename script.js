@@ -16,7 +16,7 @@ STRAIGHT_COLOR_INDEX,
 } from './shapes.js';
 
 const COLS = 20;
-const ROWS = 30;
+const ROWS = 25;
 const canvas = document.getElementById('board');
 const gameContainer = document.getElementById('game-container');
 const BLOCK_SIZE = gameContainer.offsetWidth / COLS;
