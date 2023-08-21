@@ -10,26 +10,6 @@ canvas.height = ROWS * BLOCK_SIZE;
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById("score");
 const levelElement = document.getElementById("level");
-// const startButton = document.getElementById("start");
-// startButton.disabled = true; // Disable the start button initially
-
-
-/*
-const blockImages = [];
-let imagesLoaded = 0;
-BLOCK_IMAGES.forEach((src, index) => {
-  const img = new Image(); // Create a new Image object
-  img.src = src;
-  img.onload = () => {
-    imagesLoaded++;
-    if (imagesLoaded === BLOCK_IMAGES.length) {
-      startButton.disabled = true; // Enable the start button
-    }
-  };
-  blockImages[index] = img; // Store the image object in the array
-});
-*/
-
 
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 let score = 0;
@@ -391,8 +371,6 @@ function handleKeyDown(event) {
   }
 }
 
-// startButton.addEventListener('click', startGame);
-
 document.addEventListener('keydown', handleKeyDown);
 
 canvas.focus(); // Ensure that the canvas is focused to receive key events
@@ -400,7 +378,6 @@ canvas.focus(); // Ensure that the canvas is focused to receive key events
 // Initialize the game
 // init();
 
-// pauseButton.addEventListener('click', togglePause); // Add event listener
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
 
